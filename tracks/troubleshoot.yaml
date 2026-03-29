@@ -1,0 +1,43 @@
+# Track: Troubleshoot
+# Status: stub — not yet fully implemented
+status: stub
+
+name: troubleshoot
+display_name: Troubleshoot
+description: "Something is wrong and you don't know where the fault is."
+signal_words: ["users reporting", "production", "not working", "intermittent", "deploy", "outage", "down"]
+
+legs:
+  - id: symptom-triage
+    step: symptom-triage
+    display_name: Symptom Triage
+    checkpoint: false
+
+  - id: hypothesis-tree
+    step: hypothesis-tree
+    display_name: Hypothesis Tree
+    checkpoint: true
+
+  - id: investigation
+    step: investigate-domain
+    display_name: Investigation
+    checkpoint: true
+
+  - id: diagnosis
+    step: diagnosis-report
+    display_name: Diagnosis
+    checkpoint: false
+
+  - id: remediation
+    step: guided-remediation
+    display_name: Remediation
+    checkpoint: false
+
+execution_mode: interactive
+promotion_triggers:
+  - condition: "root cause identified as a code bug"
+    suggest: bug-fix
+    message: "Root cause is a code bug. Promote to Bug Fix?"
+  - condition: "remediation requires architectural changes"
+    suggest: change
+    message: "The fix requires significant changes. Promote to Change?"

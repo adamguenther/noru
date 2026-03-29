@@ -1,0 +1,24 @@
+name: quick-task
+display_name: Quick Task
+description: "Small, well-understood work. Under 30 minutes."
+signal_words: ["quick", "small", "just", "simple", "rename", "add index", "update config"]
+
+legs:
+  - id: execute
+    step: inline-execute
+    display_name: Execute
+    checkpoint: false
+
+  - id: self-review
+    step: self-review
+    display_name: Self-Review
+    checkpoint: false
+
+execution_mode: inline
+promotion_triggers:
+  - condition: "touches more than 5 files or spans multiple services"
+    suggest: feature
+    message: "This is beyond Quick Task scope. Promote to Feature?"
+  - condition: "modifying existing behavior rather than adding"
+    suggest: change
+    message: "This looks like a Change, not a Quick Task. Promote?"

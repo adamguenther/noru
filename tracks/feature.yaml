@@ -1,0 +1,45 @@
+# Track: Feature
+# Status: stub — not yet fully implemented
+status: stub
+
+name: feature
+display_name: Feature
+description: "Adding new capability to an existing codebase."
+signal_words: ["add", "create", "build", "new", "implement", "introduce"]
+
+legs:
+  - id: codebase-map
+    step: codebase-map
+    display_name: Codebase Map
+    checkpoint: false
+
+  - id: specification
+    step: delta-spec-add
+    display_name: Specification
+    checkpoint: true
+
+  - id: planning
+    step: plan
+    display_name: Planning
+    checkpoint: false
+
+  - id: execution
+    step: wave-execute
+    display_name: Execution
+    checkpoint: true
+
+  - id: review
+    step: multi-review
+    display_name: Review
+    checkpoint: false
+
+  - id: archive
+    step: archive
+    display_name: Archive
+    checkpoint: false
+
+execution_mode: parallel
+promotion_triggers:
+  - condition: "changes modify existing behavior rather than adding new"
+    suggest: change
+    message: "This is modifying existing behavior. Promote to Change?"

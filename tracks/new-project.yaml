@@ -1,0 +1,52 @@
+# Track: New Project
+# Status: stub — not yet fully implemented
+status: stub
+
+name: new-project
+display_name: New Project
+description: "Greenfield build. Empty repo, starting from scratch."
+signal_words: ["new project", "greenfield", "from scratch", "bootstrap", "init"]
+
+legs:
+  - id: discovery
+    step: discovery
+    display_name: Discovery
+    checkpoint: false
+
+  - id: research
+    step: ecosystem-research
+    display_name: Research
+    checkpoint: false
+
+  - id: specification
+    step: full-spec
+    display_name: Specification
+    checkpoint: false
+
+  - id: architecture
+    step: architecture
+    display_name: Architecture
+    checkpoint: true
+
+  - id: planning
+    step: plan
+    display_name: Planning
+    checkpoint: false
+
+  - id: execution
+    step: wave-execute
+    display_name: Execution
+    checkpoint: true
+
+  - id: review
+    step: multi-review
+    display_name: Review
+    checkpoint: false
+
+  - id: archive
+    step: archive
+    display_name: Archive
+    checkpoint: false
+
+execution_mode: parallel
+promotion_triggers: []

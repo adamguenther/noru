@@ -1,0 +1,37 @@
+{
+  "name": "noru",
+  "version": "0.1.0",
+  "description": "Describe what you're doing. Noru routes to the right workflow.",
+  "bin": {
+    "noru": "bin/install.js"
+  },
+  "files": [
+    "bin",
+    "commands",
+    "tracks",
+    "steps",
+    "agents",
+    "soul",
+    "references",
+    "hooks",
+    "templates",
+    ".claude-plugin"
+  ],
+  "keywords": [
+    "claude-code",
+    "ai",
+    "orchestration",
+    "agent",
+    "workflow",
+    "noru"
+  ],
+  "author": "adamguenther",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/adamguenther/noru.git"
+  },
+  "engines": {
+    "node": ">=20.0.0"
+  }
+}

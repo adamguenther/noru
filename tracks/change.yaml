@@ -1,0 +1,45 @@
+# Track: Change
+# Status: stub — not yet fully implemented
+status: stub
+
+name: change
+display_name: Change
+description: "Modifying existing behavior. Refactoring. Migration."
+signal_words: ["change", "update", "refactor", "migrate", "replace", "rename", "move"]
+
+legs:
+  - id: impact-analysis
+    step: impact-analysis
+    display_name: Impact Analysis
+    checkpoint: false
+
+  - id: specification
+    step: delta-spec-mod
+    display_name: Specification
+    checkpoint: true
+
+  - id: planning
+    step: plan
+    display_name: Planning
+    checkpoint: false
+
+  - id: execution
+    step: sequential-execute
+    display_name: Execution
+    checkpoint: true
+
+  - id: review
+    step: multi-review
+    display_name: Review
+    checkpoint: false
+
+  - id: archive
+    step: archive
+    display_name: Archive
+    checkpoint: false
+
+execution_mode: sequential
+promotion_triggers:
+  - condition: "scope grows to require new capabilities beyond the modification"
+    suggest: feature
+    message: "This is growing beyond a change. Promote to Feature?"

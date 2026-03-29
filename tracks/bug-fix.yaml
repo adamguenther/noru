@@ -1,0 +1,37 @@
+name: bug-fix
+display_name: Bug Fix
+description: "Something that should work doesn't. Find it, test it, fix it."
+signal_words: ["fix", "bug", "broken", "error", "wrong", "failing", "crash", "stack trace"]
+
+legs:
+  - id: reproduce
+    step: reproduce
+    display_name: Reproduce
+    checkpoint: false
+
+  - id: root-cause
+    step: root-cause
+    display_name: Root Cause
+    checkpoint: true
+
+  - id: fix
+    step: targeted-fix
+    display_name: Fix
+    checkpoint: false
+
+  - id: verify
+    step: verify-suite
+    display_name: Verify
+    checkpoint: false
+
+execution_mode: inline
+promotion_triggers:
+  - condition: "root cause is a design flaw, not a simple bug"
+    suggest: change
+    message: "This looks like a design issue, not a bug. Promote to Change?"
+  - condition: "fix requires new capabilities or significant additions"
+    suggest: feature
+    message: "The fix scope is growing beyond a bug fix. Promote to Feature?"
+  - condition: "cause is unclear and may not be a code issue"
+    suggest: troubleshoot
+    message: "This might not be a code bug. Switch to Troubleshoot?"

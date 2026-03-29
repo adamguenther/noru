@@ -1,0 +1,28 @@
+# Track: Exploration
+# Status: stub — not yet fully implemented
+status: stub
+
+name: exploration
+display_name: Exploration
+description: "You don't know if something is feasible. Spikes, prototypes, investigations."
+signal_words: ["spike", "explore", "prototype", "investigate", "feasible", "try", "experiment"]
+
+legs:
+  - id: explore
+    step: freeform-execute
+    display_name: Explore
+    checkpoint: false
+
+  - id: findings
+    step: capture-findings
+    display_name: Findings
+    checkpoint: false
+
+execution_mode: inline
+promotion_triggers:
+  - condition: "exploration yields a clear feature to build"
+    suggest: feature
+    message: "Ready to build this? Promote to Feature with findings as input?"
+  - condition: "exploration reveals a needed change"
+    suggest: change
+    message: "This points to a change needed. Promote to Change?"
