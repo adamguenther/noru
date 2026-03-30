@@ -18,7 +18,10 @@ Close out the track cleanly. All working artifacts are finalized, state is updat
    - Key decisions made (reference decision IDs if they exist).
    - Files changed (list with modification type: created, modified, deleted).
    - Any follow-up items noted during execution or review.
-4. **Clean up temporary state.** Remove any working artifacts that are no longer needed. Checkpoints are kept -- they are part of the project history.
+4. **Clean up temporary state.** Remove working artifacts that are no longer needed:
+   - **Remove:** `.noru/plans/` (consumed during execution), `.noru/specs/` working drafts (final spec is merged into codebase)
+   - **Keep:** `.noru/checkpoints/` (project history), `.noru/findings/` (exploration deliverables), `.noru/diagnoses/` (troubleshooting records)
+   - **Reset:** `.noru/state.yaml` back to empty state (copy from `templates/state.yaml`)
 
 ## User Interaction
 

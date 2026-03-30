@@ -77,11 +77,13 @@ Done.
 3. Create new `.noru/state.yaml` for the target track:
 
 ```yaml
+version: 1
 track: [target-track]
 description: "[carried forward from previous state]"
 started: [ISO 8601 timestamp]
 status: active
 current_leg: 1
+total_legs: [number of legs from target track YAML]
 promoted_from:
   track: [previous track]
   leg_reached: [N of M]

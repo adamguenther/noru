@@ -47,11 +47,13 @@ Update the existing state to `status: paused`.
 Create or update `.noru/state.yaml`:
 
 ```yaml
+version: 1
 track: troubleshoot
 description: "[symptom description]"
 started: [ISO 8601 timestamp]
 status: active
 current_leg: 1
+total_legs: 5
 legs:
   - id: symptom-triage
     status: in-progress
