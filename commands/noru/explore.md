@@ -47,11 +47,13 @@ Update the existing state to `status: paused`.
 Create or update `.noru/state.yaml`:
 
 ```yaml
+version: 1
 track: exploration
 description: "[exploration topic]"
 started: [ISO 8601 timestamp]
 status: active
 current_leg: 1
+total_legs: 2
 legs:
   - id: explore
     status: in-progress

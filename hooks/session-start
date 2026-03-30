@@ -43,8 +43,8 @@ if [ -f "$STATE_FILE" ]; then
     # Extract track name and leg from state.yaml (simple grep, no yaml parser needed).
     TRACK_NAME=$(grep -m1 '^track:' "$STATE_FILE" 2>/dev/null | sed 's/^track:[[:space:]]*//' || echo "")
     TRACK_DESC=$(grep -m1 '^description:' "$STATE_FILE" 2>/dev/null | sed 's/^description:[[:space:]]*//' || echo "")
-    TRACK_LEG=$(grep -m1 '^leg:' "$STATE_FILE" 2>/dev/null | sed 's/^leg:[[:space:]]*//' || echo "")
-    TRACK_LEGS=$(grep -m1 '^legs:' "$STATE_FILE" 2>/dev/null | sed 's/^legs:[[:space:]]*//' || echo "")
+    TRACK_LEG=$(grep -m1 '^current_leg:' "$STATE_FILE" 2>/dev/null | sed 's/^current_leg:[[:space:]]*//' || echo "")
+    TRACK_LEGS=$(grep -m1 '^total_legs:' "$STATE_FILE" 2>/dev/null | sed 's/^total_legs:[[:space:]]*//' || echo "")
     TRACK_UPDATED=$(grep -m1 '^updated:' "$STATE_FILE" 2>/dev/null | sed 's/^updated:[[:space:]]*//' || echo "")
 
     if [ -n "$TRACK_NAME" ]; then

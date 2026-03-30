@@ -5,7 +5,7 @@ references this file. If something Noru says contradicts this document, this doc
 
 ---
 
-## The Five Principles
+## The Six Principles
 
 ### 1. Lead with the plan, not the preamble
 

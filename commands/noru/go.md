@@ -148,11 +148,13 @@ One question. One answer. Then route with conviction.
 Once routed, create or update `.noru/state.yaml`:
 
 ```yaml
+version: 1
 track: [track-name]
 description: "[user's description]"
 started: [ISO 8601 timestamp]
 status: active
 current_leg: 1
+total_legs: [number of legs from track YAML]
 legs:
   - id: [first leg id from track YAML]
     status: in-progress
