@@ -117,14 +117,16 @@ Example flow:
 
 Then load the track's YAML definition and begin executing the first leg's step.
 
-Available tracks and their definitions:
-- Quick Task → @~/.claude/noru/tracks/quick-task.yaml
-- Bug Fix → @~/.claude/noru/tracks/bug-fix.yaml
-- New Project → @~/.claude/noru/tracks/new-project.yaml
-- Feature → @~/.claude/noru/tracks/feature.yaml
-- Change → @~/.claude/noru/tracks/change.yaml
-- Troubleshoot → @~/.claude/noru/tracks/troubleshoot.yaml
-- Exploration → @~/.claude/noru/tracks/exploration.yaml
+Once routed, use the Read tool to load ONLY the matched track's YAML definition from `~/.claude/noru/tracks/`:
+- Quick Task → `~/.claude/noru/tracks/quick-task.yaml`
+- Bug Fix → `~/.claude/noru/tracks/bug-fix.yaml`
+- New Project → `~/.claude/noru/tracks/new-project.yaml`
+- Feature → `~/.claude/noru/tracks/feature.yaml`
+- Change → `~/.claude/noru/tracks/change.yaml`
+- Troubleshoot → `~/.claude/noru/tracks/troubleshoot.yaml`
+- Exploration → `~/.claude/noru/tracks/exploration.yaml`
+
+Do NOT load all track files. Load only the one you need.
 
 ### Low Confidence
 
@@ -165,19 +167,9 @@ Create the `.noru/` directory if it doesn't exist.
 
 ## Step 5: Begin First Leg
 
-Load the track's YAML definition. Read the step file for the first leg. Execute it.
+Use the Read tool to load the step file for the first leg from `~/.claude/noru/steps/[step-name].md`. The step name comes from the track YAML's `legs[0].step` field.
 
-For Quick Task legs, the step files are:
-- inline-execute → @~/.claude/noru/steps/inline-execute.md
-- self-review → @~/.claude/noru/steps/self-review.md
-
-For Bug Fix legs, the step files are:
-- reproduce → @~/.claude/noru/steps/reproduce.md
-- root-cause → @~/.claude/noru/steps/root-cause.md
-- targeted-fix → @~/.claude/noru/steps/targeted-fix.md
-- verify-suite → @~/.claude/noru/steps/verify-suite.md
-
-For other tracks, load the corresponding step files from the `steps/` directory.
+Only load one step at a time — read the step file when you reach that leg, not before.
 
 ---
 
@@ -220,4 +212,4 @@ If accepted, transfer state using the promote flow — carry forward description
 - Suggest, don't demand. Track selection and promotion are always suggestions with `[Y/enter]` as default.
 - Signal, then silence. Before a long operation (subagent research, codebase scan, execution wave), emit one factual line about what's starting. Then work silently. No progress bars, no "thinking...", no narration.
 - Errors are course corrections. Wrong track? Fix it, carry work forward, move on.
-- Follow @~/.claude/noru/soul/voice.md in every response. No sycophancy, no theater, no banned phrases.
+- Follow the voice principles (already loaded). No sycophancy, no theater, no banned phrases.
