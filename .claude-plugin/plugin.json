@@ -1,0 +1,18 @@
+{
+  "name": "noru",
+  "description": "AI agent orchestration — describe what you're doing, get routed to the right workflow",
+  "version": "0.1.0",
+  "author": {
+    "name": "adamguenther"
+  },
+  "homepage": "https://github.com/adamguenther/noru",
+  "repository": "https://github.com/adamguenther/noru",
+  "license": "MIT",
+  "keywords": [
+    "orchestration",
+    "workflow",
+    "agent",
+    "tracks",
+    "routing"
+  ]
+}

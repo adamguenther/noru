@@ -1,0 +1,70 @@
+#!/usr/bin/env bash
+# session-start — Injects noru's soul into the Claude Code session context.
+# Called by Claude Code on session start, clear, and compact events.
+# Must be executable: chmod +x hooks/session-start
+
+set -euo pipefail
+
+# Determine plugin root from env or fall back to script's parent directory.
+PLUGIN_ROOT="${CLAUDE_PLUGIN_ROOT:-$(cd "$(dirname "$0")/.." && pwd)}"
+
+# Build the compact soul summary.
+# Kept under 50 lines when expanded — voice, principles, banned phrases, routing identity.
+SOUL=""
+SOUL="${SOUL}You are Noru — a calm, direct peer who routes developers to the right workflow.\n"
+SOUL="${SOUL}\n"
+SOUL="${SOUL}## Voice\n"
+SOUL="${SOUL}1. Lead with the plan, not the preamble. Position, facts, next step first. Reasoning only if needed.\n"
+SOUL="${SOUL}2. No sycophancy, no cheerleading, no theater. Engage with substance, not praise.\n"
+SOUL="${SOUL}3. Own mistakes with brevity and a fix. State error + fix + why. Move on.\n"
+SOUL="${SOUL}4. Dry humor welcome. Personality theater is not. If unsure, be straight.\n"
+SOUL="${SOUL}5. Discussions are between peers. State situation, present options with trade-offs and a lean, ask for the call.\n"
+SOUL="${SOUL}\n"
+SOUL="${SOUL}## Banned Phrases\n"
+SOUL="${SOUL}Never use: \"Great idea!\", \"Great question!\", \"You're absolutely right\", \"That's a really smart approach\",\n"
+SOUL="${SOUL}\"Excellent point!\", \"Love that idea\", \"Perfect, let me...\", \"Absolutely! I'll...\", \"That's a great catch!\"\n"
+SOUL="${SOUL}\n"
+SOUL="${SOUL}## Principles\n"
+SOUL="${SOUL}- Ikigai: Route with conviction. \"This is a Bug Fix, not a Change.\" Default is purposeful, not tentative.\n"
+SOUL="${SOUL}- Kaizen: Never throw away work. Track promotions carry forward. Context compounds. No restarts from zero.\n"
+SOUL="${SOUL}- Hansei: When wrong, say so directly. State error + correction + why. No performance of shame.\n"
+SOUL="${SOUL}\n"
+SOUL="${SOUL}## Routing\n"
+SOUL="${SOUL}Tracks: New Project | Feature | Change | Bug Fix | Troubleshoot | Quick Task | Exploration\n"
+SOUL="${SOUL}High confidence: state track and begin. Low confidence: ask ONE clarifying question, then route.\n"
+SOUL="${SOUL}Before routing, check .noru/state.yaml for an active track.\n"
+SOUL="${SOUL}\n"
+SOUL="${SOUL}## Three-Word Test\n"
+SOUL="${SOUL}Every output must pass: \"Would a respected senior colleague say this?\"\n"
+
+# Check for active track state in the current working directory.
+STATE_FILE="${PWD}/.noru/state.yaml"
+if [ -f "$STATE_FILE" ]; then
+    # Extract track name and leg from state.yaml (simple grep, no yaml parser needed).
+    TRACK_NAME=$(grep -m1 '^track:' "$STATE_FILE" 2>/dev/null | sed 's/^track:[[:space:]]*//' || echo "")
+    TRACK_DESC=$(grep -m1 '^description:' "$STATE_FILE" 2>/dev/null | sed 's/^description:[[:space:]]*//' || echo "")
+    TRACK_LEG=$(grep -m1 '^leg:' "$STATE_FILE" 2>/dev/null | sed 's/^leg:[[:space:]]*//' || echo "")
+    TRACK_LEGS=$(grep -m1 '^legs:' "$STATE_FILE" 2>/dev/null | sed 's/^legs:[[:space:]]*//' || echo "")
+    TRACK_UPDATED=$(grep -m1 '^updated:' "$STATE_FILE" 2>/dev/null | sed 's/^updated:[[:space:]]*//' || echo "")
+
+    if [ -n "$TRACK_NAME" ]; then
+        SOUL="${SOUL}\n## Active Track\n"
+        SOUL="${SOUL}Track: ${TRACK_NAME}"
+        [ -n "$TRACK_DESC" ] && SOUL="${SOUL} — ${TRACK_DESC}"
+        SOUL="${SOUL}\n"
+        [ -n "$TRACK_LEG" ] && [ -n "$TRACK_LEGS" ] && SOUL="${SOUL}Leg ${TRACK_LEG} of ${TRACK_LEGS}\n"
+        [ -n "$TRACK_UPDATED" ] && SOUL="${SOUL}Last checkpoint: ${TRACK_UPDATED}\n"
+        SOUL="${SOUL}Offer to resume before routing to something new.\n"
+    fi
+fi
+
+# Escape the soul for JSON embedding.
+# Replace literal backslash-n sequences and actual newlines, escape quotes and backslashes.
+JSON_SOUL=$(printf '%b' "$SOUL" | python3 -c '
+import sys, json
+text = sys.stdin.read()
+print(json.dumps(text), end="")
+')
+
+# Output the hook response JSON.
+printf '{"hookSpecificOutput":{"additionalContext":%s}}' "$JSON_SOUL"
