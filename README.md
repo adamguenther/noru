@@ -1,3 +1,5 @@
+> **Alpha** -- Noru is under active development. APIs and track behavior may change between versions.
+
 # noru
 
 **noru** (NOR-oo) -- from Japanese 乗る, to board a route
