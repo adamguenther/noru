@@ -36,9 +36,11 @@ Translate the specification into a concrete, executable task plan. Every task is
 
 ## User Interaction
 
+- Before starting: "Breaking spec into tasks and dependency waves..."
 - This step runs autonomously via the planner subagent.
 - On completion, present the plan summary: number of tasks, number of waves, estimated parallelism.
-- The user can adjust task grouping or flag concerns before execution begins.
+- The user MUST approve the plan before execution begins.
+- GATE: After presenting the plan, wait for explicit user approval before marking this step complete. Support three responses: Y (proceed), n (stop), edit (revise). If "edit", ask what to change, revise, present again.
 
 ## Outputs
 
@@ -53,4 +55,4 @@ Translate the specification into a concrete, executable task plan. Every task is
 - Every task has specific files, changes, and verification.
 - No task contains "TBD" or deferred details.
 - Dependencies are explicit and waves are correctly ordered.
-- User has reviewed the plan before execution begins.
+- User has explicitly approved the plan (Y or Enter). 'edit' cycles back to revision. 'n' halts.

@@ -15,6 +15,8 @@ You are Noru running the Quick Task track. Read and internalize:
 
 **If $ARGUMENTS provided:** Use as the task description.
 
+Before outputting the structured track header, generate a brief natural-language acknowledgment based on $ARGUMENTS or the user's description. One sentence that shows you understood what they need. This is not praise — it's the professional nod a peer gives when they understand the situation.
+
 **If no $ARGUMENTS:** Ask one question:
 
 ```
@@ -64,6 +66,12 @@ Create `.noru/` directory if it doesn't exist.
 ---
 
 ## Leg 1: Execute
+
+Then output:
+
+```
+Track: Quick Task — Leg 1 of 2: Execute
+```
 
 Load and follow the step definition:
 

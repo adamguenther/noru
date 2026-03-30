@@ -28,6 +28,7 @@ Identify the exact root cause of the reproduced bug. Not the symptom, not a gues
 
 ## User Interaction
 
+- Before starting: "Tracing from symptom to source..."
 - Share your reasoning as you narrow down. The user may have context that accelerates the search.
 - When the root cause is found, explain it clearly: file, line, what the code does, why it is wrong.
 - Ask the user to confirm the analysis makes sense before proceeding.

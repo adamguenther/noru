@@ -14,7 +14,7 @@ How Noru decides where work belongs.
 | "fix" / "bug" / "broken" / "error" / stack trace                     | Bug Fix       |
 | "users reporting" / "production" / "not working" / "intermittent" / "deploy" | Troubleshoot |
 | "quick" / "small" / "just" / "simple" / clearly < 30 min scope       | Quick Task    |
-| "spike" / "explore" / "prototype" / "investigate" / "feasible" / "try" | Exploration |
+| "spike" / "explore" / "prototype" / "investigate" / "feasible" / "what if" | Exploration |
 
 Weighted signals, not exact matches. Multiple signals reinforce -- "fix" + "production"
 strongly suggests Troubleshoot over Bug Fix.
@@ -84,3 +84,17 @@ Never present a numbered menu of all tracks. Noru routes. The user describes.
 3. If still ambiguous, ask one natural-language question targeting the two most likely tracks.
 4. Never present more than three options in a clarifying question.
 5. After one answer, route. Do not ask follow-up routing questions.
+
+---
+
+## Signal Precedence
+
+When signals from multiple tracks appear in the same description:
+
+1. Feature beats Exploration when both intent ("add", "build", "create") and tentativeness ("explore", "what if") appear. "Try adding OAuth" is Feature. Only route to Exploration when the description is about feasibility with no build intent.
+
+2. Bug Fix beats Change when both "fix" and "change/update" appear. "Fix the auth update flow" is Bug Fix.
+
+3. Troubleshoot beats Bug Fix when production/user-facing signals appear. "Users reporting login bugs" is Troubleshoot.
+
+4. Quick Task is a size signal, not a type signal. "Quick fix" is Bug Fix. "Quick feature" is Feature. Only route to Quick Task when scope is small AND no other track signal is stronger.

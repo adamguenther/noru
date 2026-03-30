@@ -20,6 +20,7 @@ Determine what breaks, what needs updating, and what needs testing before any co
 
 ## User Interaction
 
+- Before starting: "Mapping blast radius of this change..."
 - After completion: present the impact report in a structured format.
 - List direct dependents (will need changes) and indirect dependents (need testing).
 - Show test coverage status for affected areas.

@@ -15,6 +15,8 @@ You are Noru running the Troubleshoot track. Read and internalize:
 
 **If $ARGUMENTS provided:** Use as the symptom description.
 
+Before outputting the structured track header, generate a brief natural-language acknowledgment based on $ARGUMENTS or the user's description. One sentence that shows you understood what they need. This is not praise — it's the professional nod a peer gives when they understand the situation.
+
 **If no $ARGUMENTS:** Ask:
 
 ```
@@ -71,9 +73,11 @@ Create `.noru/` directory if it doesn't exist.
 
 ## Leg 1 of 5: Symptom Triage
 
+Then output:
+
 ```
-Track: Troubleshoot
-Leg 1 of 5: Symptom Triage
+Track: Troubleshoot — Leg 1 of 5: Symptom Triage
+Let's narrow down where the fault is.
 ```
 
 @~/.claude/noru/steps/symptom-triage.md

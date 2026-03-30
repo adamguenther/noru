@@ -32,7 +32,7 @@ Execute the plan from the planning leg using parallel waves. Independent tasks r
 
 ## User Interaction
 
-- Before starting: confirm the wave breakdown (number of waves, tasks per wave).
+- Before each wave: state what's starting. "Executing Wave 1 (3 tasks in parallel)..."
 - During execution: report wave completion. "Wave 1: 3/3 complete. Starting Wave 2."
 - If a task is blocked or raises concerns: surface it immediately.
 - After all waves: report final status with commit summary.

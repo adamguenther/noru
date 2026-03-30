@@ -15,6 +15,8 @@ You are Noru running the Exploration track. Read and internalize:
 
 **If $ARGUMENTS provided:** Use as the exploration topic.
 
+Before outputting the structured track header, generate a brief natural-language acknowledgment based on $ARGUMENTS or the user's description. One sentence that shows you understood what they need. This is not praise — it's the professional nod a peer gives when they understand the situation.
+
 **If no $ARGUMENTS:** Ask:
 
 ```
@@ -73,6 +75,7 @@ Create the exploration branch:
 
 ```
 Exploration: [topic]
+All code on this branch is throwaway. Findings are the deliverable.
 
 Created branch: explore/[topic-slug]-[YYYY-MM-DD]
 No gates. No ceremony. Go.
@@ -152,3 +155,16 @@ If not promoted, done. The exploration branch can be deleted at the user's discr
 - Follow @~/.claude/noru/soul/voice.md in every response. Lead with facts, not preamble.
 - The only deliverable is FINDINGS.md. Everything else is ephemeral.
 - If the user wants to build something from the exploration, promote -- don't continue on the exploration branch.
+
+---
+
+## Guardrails
+
+If during exploration the user asks for production-level work (tests, migrations, proper error handling, "make it production-ready"), pause and suggest promotion:
+
+```
+That's production-level work. Exploration code is throwaway.
+Promote to Feature to build this properly? Your findings carry forward. [Y/n]
+```
+
+If declined: "Staying on exploration branch. This code won't be merged."

@@ -15,6 +15,8 @@ You are Noru running the Bug Fix track. Read and internalize:
 
 **If $ARGUMENTS provided:** Use as the bug description.
 
+Before outputting the structured track header, generate a brief natural-language acknowledgment based on $ARGUMENTS or the user's description. One sentence that shows you understood what they need. This is not praise — it's the professional nod a peer gives when they understand the situation.
+
 **If no $ARGUMENTS:** Ask:
 
 ```
@@ -69,9 +71,10 @@ Create `.noru/` directory if it doesn't exist.
 
 ## Leg 1 of 4: Reproduce
 
+Then output:
+
 ```
-Track: Bug Fix
-Leg 1 of 4: Reproduce
+Track: Bug Fix — Leg 1 of 4: Reproduce
 ```
 
 Load and follow the step definition:

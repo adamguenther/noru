@@ -68,14 +68,43 @@ Also check codebase state:
 - Empty repo / no source files → New Project (regardless of description)
 - Existing code → use signal words to determine track
 
+### Signal Conflict Resolution
+
+When the description contains signals for multiple tracks, apply the precedence rules from @~/.claude/noru/soul/routing.md:
+- "try" + build intent ("add", "create", "build") = Feature, not Exploration
+- If unsure whether the user wants to explore or build, ask one question:
+
+```
+Are you spiking this to see if it's feasible, or ready to build it?
+```
+
+One question. Route on the answer.
+
 ### High Confidence
 
 Signals are clear and consistent. State the track and begin immediately. No confirmation needed.
 
-```
-Track: [Track Name]
-Leg 1 of N: [Leg Name]
-```
+Before the structured header, generate a brief natural-language acknowledgment (one sentence) that:
+1. Shows you understood what the user described (reference their specific situation)
+2. States the routing decision with conviction
+3. Optionally hints at what happens first
+
+Then output the structured header with orientation message.
+
+Example flow:
+  User: "the search indexer is dropping documents silently"
+
+  Silent data loss in the indexer — that needs investigation before we fix anything.
+
+  Track: Troubleshoot — Leg 1 of 5: Symptom Triage
+
+Example flow:
+  User: "add OAuth support"
+
+  Adding auth capabilities to an existing service. Feature track.
+
+  Track: Feature — Leg 1 of 6: Codebase Map
+  Scanning the codebase first, then I'll draft a plan for your review.
 
 Then load the track's YAML definition and begin executing the first leg's step.
 
@@ -180,6 +209,6 @@ If accepted, transfer state using the promote flow — carry forward description
 - Every response starts with position (track, leg, what's in scope). The user never has to ask "where am I?"
 - One question at a time during discovery. Not a form. A conversation.
 - Suggest, don't demand. Track selection and promotion are always suggestions with `[Y/enter]` as default.
-- Silence between legs. When working, work. No progress narration.
+- Signal, then silence. Before a long operation (subagent research, codebase scan, execution wave), emit one factual line about what's starting. Then work silently. No progress bars, no "thinking...", no narration.
 - Errors are course corrections. Wrong track? Fix it, carry work forward, move on.
 - Follow @~/.claude/noru/soul/voice.md in every response. No sycophancy, no theater, no banned phrases.

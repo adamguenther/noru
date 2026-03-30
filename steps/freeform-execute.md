@@ -29,6 +29,7 @@ Work on whatever the user is investigating, without structure or ceremony. This 
 - Before starting: confirm the exploration topic (one sentence).
 - During: follow the user's direction. Ask clarifying questions when the investigation stalls or forks.
 - When the user signals done (says "done", "that's enough", "let's wrap up", or similar): transition to the findings step.
+- If the user's requests shift toward production-quality work (tests, migrations, proper error handling), surface the promotion option: "That's production-level work. Exploration code is throwaway. Promote to Feature? [Y/n]"
 
 ## Outputs
 

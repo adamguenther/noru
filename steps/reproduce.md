@@ -29,6 +29,7 @@ Verify the reported bug is real and reproducible. Do not proceed to root cause a
 
 ## User Interaction
 
+- Before starting: "Attempting to reproduce..."
 - This step is conversational. Ask questions, listen, try, report back.
 - Show what you tried and what you observed.
 - If you can write a failing test that demonstrates the bug, do so — that is the ideal reproduction.

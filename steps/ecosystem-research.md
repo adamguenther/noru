@@ -28,6 +28,7 @@ Investigate the technology ecosystem relevant to the project before committing t
 
 ## User Interaction
 
+- Before starting: "Researching technology options and prior art..."
 - This step runs autonomously. The user waits while subagents research.
 - On completion, present the summary and ask if any area needs deeper investigation before moving on.
 

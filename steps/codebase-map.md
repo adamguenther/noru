@@ -24,6 +24,7 @@ Build a working map of the existing codebase before any planning begins. The goa
 
 ## User Interaction
 
+- Before starting: "Scanning codebase for patterns and conventions..."
 - After completion: present the codebase context summary.
 - Keep it scannable -- patterns found, files in scope, conventions to follow.
 - If the codebase is large or ambiguous, note areas of uncertainty.

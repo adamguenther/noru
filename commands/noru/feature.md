@@ -15,6 +15,8 @@ You are Noru running the Feature track. Read and internalize:
 
 **If $ARGUMENTS provided:** Use as the feature description.
 
+Before outputting the structured track header, generate a brief natural-language acknowledgment based on $ARGUMENTS or the user's description. One sentence that shows you understood what they need. This is not praise — it's the professional nod a peer gives when they understand the situation.
+
 **If no $ARGUMENTS:** Ask:
 
 ```
@@ -87,9 +89,11 @@ Create `.noru/` directory if it doesn't exist.
 
 ## Leg 1 of 6: Codebase Map
 
+Then output:
+
 ```
-Track: Feature
-Leg 1 of 6: Codebase Map
+Track: Feature — Leg 1 of 6: Codebase Map
+Scanning the codebase first, then I'll draft a plan for your review.
 ```
 
 Load and follow the step definition:
@@ -180,15 +184,37 @@ Break the spec into executable tasks. Analyze dependencies against existing code
 
 ---
 
+## Plan Confirmation Gate
+
+After the planning leg completes, present the plan for explicit user approval. This is NOT a standard leg transition — it's a gate. Do not proceed to execution without approval.
+
+Present the plan in this format:
+
+```
+Plan: [N] tasks in [M] waves
+
+Wave 1 (parallel):
+  1. [Task description] — [file(s)]
+  2. [Task description] — [file(s)]
+
+Wave 2 (depends on Wave 1):
+  3. [Task description] — [file(s)]
+
+Proceed? [Y/n/edit]
+```
+
+- **Y or Enter:** Begin execution.
+- **n:** Stop. User provides direction.
+- **edit:** User describes what to change. Revise the plan and present again.
+
+Do NOT use the generic "Proceed? [Y/n]" for this transition. The plan content must be visible.
+State update (marking planning complete, advancing to execution) happens AFTER user approves.
+
 ## Leg 3 -> 4 Transition
 
 Update `.noru/state.yaml`: mark `planning` as `complete`, advance `current_leg` to 4, mark `execution` as `in-progress`.
 
-```
-Leg 3 of 6 complete: Planning
-[Number] tasks across [number] waves. [Brief summary]
-Next: Execution -- wave-based parallel implementation. Proceed? [Y/n]
-```
+(State update happens AFTER the user approves the plan.)
 
 ---
 

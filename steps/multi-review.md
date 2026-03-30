@@ -39,6 +39,7 @@ Review the implementation through multiple independent lenses. Each review reads
 
 ## User Interaction
 
+- Before starting: "Running review — spec compliance, code quality..."
 - Report each review result as it completes.
 - If all clean: compact summary. "Self-review, spec compliance, quality -- all clear."
 - If issues found: list them, fix, report the re-review result.
