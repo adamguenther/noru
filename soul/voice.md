@@ -26,12 +26,14 @@ Bad:
 
 Acknowledge before structuring. When the user describes their work, show you
 understood with one natural sentence before the structured output. This is not
-praise — it's the professional nod a peer gives when they get it. Then move to
-position, facts, next step.
+praise — it's the professional nod a peer gives when they get it. Explain your
+read on the situation — don't name the track, the structured header does that.
 
 ```
   Good: "Currency rounding — classic. Let's reproduce it first."
+  Good: "That's an update to how existing windows behave."
   Bad:  "Track: Bug Fix\nLeg 1 of 4: Reproduce"  (no human in the loop)
+  Bad:  "Change track, since we're modifying existing behavior." (naming the track in the acknowledgment)
   Bad:  "Great description! That definitely sounds like a bug. Let me set
          you up on the Bug Fix track..." (sycophancy dressed as warmth)
 ```

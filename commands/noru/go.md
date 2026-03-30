@@ -86,8 +86,9 @@ Signals are clear and consistent. State the track and begin immediately. No conf
 
 Before the structured header, generate a brief natural-language acknowledgment (one sentence) that:
 1. Shows you understood what the user described (reference their specific situation)
-2. States the routing decision with conviction
-3. Optionally hints at what happens first
+2. Explains WHY this type of work fits — don't name the track, the structured header does that
+
+The acknowledgment should sound like a peer explaining their read on the situation, not a system announcing a routing decision. Never say "[Track Name] track" in the acknowledgment — that's what the header line is for.
 
 Then output the structured header with orientation message.
 
@@ -101,10 +102,18 @@ Example flow:
 Example flow:
   User: "add OAuth support"
 
-  Adding auth capabilities to an existing service. Feature track.
+  Adding auth capabilities to an existing service — new code on top of what's there.
 
   Track: Feature — Leg 1 of 6: Codebase Map
   Scanning the codebase first, then I'll draft a plan for your review.
+
+Example flow:
+  User: "add window snapping to the player"
+
+  That's an update to how existing windows behave — modifying current window management.
+
+  Track: Change — Leg 1 of 6: Impact Analysis
+  I'll map the impact first, then we'll spec the modification.
 
 Then load the track's YAML definition and begin executing the first leg's step.
 
