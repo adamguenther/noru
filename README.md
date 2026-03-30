@@ -8,7 +8,7 @@ Describe what you're doing. Noru routes to the right workflow.
 
 ## How It Works
 
-One entry point: `/noru "fix the login bug"`. Noru reads your intent, picks the right track, and scales ceremony to match the work. Small tasks get zero overhead. Complex work gets full planning. You don't choose -- the router does.
+One entry point: `/noru:go "fix the login bug"`. Noru reads your intent, picks the right track, and scales ceremony to match the work. Small tasks get zero overhead. Complex work gets full planning. You don't choose -- the router does.
 
 ## Tracks
 
@@ -28,7 +28,7 @@ Noru has seven tracks. Each defines a workflow shape matched to the type of work
 
 | Command | Purpose |
 |---|---|
-| `/noru` | Auto-route by description (the 90% case) |
+| `/noru:go` | Auto-route by description (the 90% case) |
 | `/noru:new` | New Project track |
 | `/noru:feature` | Feature track |
 | `/noru:change` | Change track |
@@ -42,7 +42,7 @@ Noru has seven tracks. Each defines a workflow shape matched to the type of work
 | `/noru:resume` | Pick up from last checkpoint |
 | `/noru:pause` | Park work with handoff context |
 
-12 commands. Seven are track shortcuts most users won't need because `/noru` auto-routes. A user who learns `/noru`, `/noru:status`, and `/noru:resume` has 95% of the functionality.
+12 commands. Seven are track shortcuts most users won't need because `/noru:go` auto-routes. A user who learns `/noru:go`, `/noru:status`, and `/noru:resume` has 95% of the functionality.
 
 ## Install
 
@@ -64,7 +64,7 @@ The installer symlinks noru's commands into your Claude Code configuration and s
 ## Quick Start
 
 ```
-> /noru "fix the login bug"
+> /noru:go "fix the login bug"
 
 Track: Bug Fix
 Scope: auth/login.ts -- token refresh not handling expired sessions.

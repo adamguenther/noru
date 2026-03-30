@@ -1,6 +1,6 @@
 ---
-name: noru
-description: Auto-route to the right track based on what you describe
+name: noru:go
+description: Describe what you're doing — Noru routes to the right track
 argument-hint: "[describe what you're working on]"
 ---
 

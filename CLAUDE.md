@@ -1,7 +1,7 @@
 # Noru
 
 Noru is an agent orchestration framework for Claude Code. It provides a single
-entry point (`/noru`) that reads a task description, routes to the right
+entry point (`/noru:go`) that reads a task description, routes to the right
 workflow track, and scales ceremony to match the work. Seven tracks, twelve
 commands, composable steps, and a consistent voice.
 

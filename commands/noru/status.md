@@ -16,7 +16,7 @@ Read `.noru/state.yaml`.
 **If the file doesn't exist or `.noru/` directory doesn't exist:**
 
 ```
-No active track. Run /noru to start.
+No active track. Run /noru:go to start.
 ```
 
 Done. Nothing else to say.

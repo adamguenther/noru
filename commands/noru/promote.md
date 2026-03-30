@@ -48,7 +48,7 @@ Read `.noru/state.yaml`.
 **If no active track:**
 
 ```
-Nothing to promote. No active track. Run /noru to start.
+Nothing to promote. No active track. Run /noru:go to start.
 ```
 
 Done.

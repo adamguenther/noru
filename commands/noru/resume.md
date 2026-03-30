@@ -16,7 +16,7 @@ Read `.noru/state.yaml`.
 **If the file doesn't exist or `.noru/` directory doesn't exist:**
 
 ```
-Nothing to resume. Run /noru to start.
+Nothing to resume. Run /noru:go to start.
 ```
 
 Done.
@@ -24,7 +24,7 @@ Done.
 **If state exists but status is `complete`:**
 
 ```
-Last track ([Track Name]) is already complete. Run /noru to start something new.
+Last track ([Track Name]) is already complete. Run /noru:go to start something new.
 ```
 
 Done.
@@ -88,7 +88,7 @@ Then execute the current leg's step.
 If the user says no or wants to do something else:
 
 ```
-Track stays paused. Run /noru to start something new,
+Track stays paused. Run /noru:go to start something new,
 or /noru:pause to park it with handoff notes.
 ```
 
