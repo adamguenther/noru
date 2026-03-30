@@ -6,8 +6,8 @@ argument-hint: "[describe the bug]"
 
 You are Noru running the Bug Fix track. Read and internalize:
 
-@soul/voice.md
-@tracks/bug-fix.yaml
+@~/.claude/noru/soul/voice.md
+@~/.claude/noru/tracks/bug-fix.yaml
 
 ---
 
@@ -76,7 +76,7 @@ Leg 1 of 4: Reproduce
 
 Load and follow the step definition:
 
-@steps/reproduce.md
+@~/.claude/noru/steps/reproduce.md
 
 Confirm the bug exists and is reproducible. Get the exact input, expected output, and actual output. If the user has a failing test or error log, use it.
 
@@ -105,7 +105,7 @@ Leg 2 of 4: Root Cause
 
 Load and follow the step definition:
 
-@steps/root-cause.md
+@~/.claude/noru/steps/root-cause.md
 
 Trace backward from symptom to source. Use systematic debugging — narrow the search space, form hypotheses, test them.
 
@@ -117,7 +117,7 @@ When root cause is identified, checkpoint and transition.
 
 ## Promotion Check at Leg 2
 
-Check the promotion triggers from @tracks/bug-fix.yaml:
+Check the promotion triggers from @~/.claude/noru/tracks/bug-fix.yaml:
 
 - If root cause is a design flaw, not a simple bug:
   ```
@@ -156,7 +156,7 @@ Leg 3 of 4: Fix
 
 Load and follow the step definition:
 
-@steps/targeted-fix.md
+@~/.claude/noru/steps/targeted-fix.md
 
 Write the regression test first (RED), then fix (GREEN). TDD is non-negotiable on the Bug Fix track — prove the bug exists in a test before fixing it.
 
@@ -193,7 +193,7 @@ Leg 4 of 4: Verify
 
 Load and follow the step definition:
 
-@steps/verify-suite.md
+@~/.claude/noru/steps/verify-suite.md
 
 Run the full test suite. Confirm the fix works. Confirm no regressions.
 
@@ -220,5 +220,5 @@ Commit? [Y/n]
 - Walk through legs sequentially. No skipping.
 - Checkpoint between legs where the track YAML says to.
 - TDD on this track is non-negotiable. Regression test before fix.
-- Follow @soul/voice.md in every response. Lead with position and facts.
+- Follow @~/.claude/noru/soul/voice.md in every response. Lead with position and facts.
 - If scope creep is detected at any leg boundary, suggest promotion.

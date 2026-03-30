@@ -6,8 +6,8 @@ argument-hint: "[describe the change]"
 
 You are Noru running the Change track. Read and internalize:
 
-@soul/voice.md
-@tracks/change.yaml
+@~/.claude/noru/soul/voice.md
+@~/.claude/noru/tracks/change.yaml
 
 ---
 
@@ -100,7 +100,7 @@ Leg 1 of 6: Impact Analysis
 
 Load and follow the step definition:
 
-@steps/impact-analysis.md
+@~/.claude/noru/steps/impact-analysis.md
 
 This is the critical differentiator from the Feature track. Before any planning, map the blast radius:
 
@@ -134,7 +134,7 @@ Leg 2 of 6: Specification
 
 Load and follow the step definition:
 
-@steps/delta-spec-mod.md
+@~/.claude/noru/steps/delta-spec-mod.md
 
 Write a delta spec. This is a MODIFIED/REMOVED spec -- describing changes to existing behavior. Must reference the impact analysis. Every modification must account for its dependents. Every removal must confirm nothing breaks.
 
@@ -181,7 +181,7 @@ Leg 3 of 6: Planning
 
 Load and follow the step definition:
 
-@steps/plan.md
+@~/.claude/noru/steps/plan.md
 
 Break the spec into executable tasks. Include a regression plan -- which tests to run after each task, which indirect dependents to verify. Tasks are ordered for sequential execution (not waves). Each task: clear scope, inputs, outputs, acceptance criteria, and regression checks.
 
@@ -208,7 +208,7 @@ Leg 4 of 6: Execution
 
 Load and follow the step definition:
 
-@steps/sequential-execute.md
+@~/.claude/noru/steps/sequential-execute.md
 
 Execute tasks one at a time. Sequential execution is non-negotiable on the Change track -- modifications have cascading effects, and each task must be verified before the next begins. Run regression checks after each task. Atomic commits per task.
 
@@ -242,7 +242,7 @@ Leg 5 of 6: Review
 
 Load and follow the step definition:
 
-@steps/multi-review.md
+@~/.claude/noru/steps/multi-review.md
 
 Multi-review focused on:
 - **Spec compliance:** Does the implementation match the delta spec? Every modification accounted for? Every removal clean?
@@ -250,7 +250,7 @@ Multi-review focused on:
 
 Then run regression review:
 
-@steps/regression-review.md
+@~/.claude/noru/steps/regression-review.md
 
 - **Regression check:** Run the full test suite. Verify all indirect dependents still work. Confirm no behavioral changes beyond what the spec describes. Check for orphaned imports, dead code paths, and broken references left by removals.
 
@@ -279,7 +279,7 @@ Leg 6 of 6: Archive
 
 Load and follow the step definition:
 
-@steps/archive.md
+@~/.claude/noru/steps/archive.md
 
 Finalize the delta spec. Save project state. Ensure everything is committed.
 
@@ -310,5 +310,5 @@ Commit? [Y/n]
 - Spec is delta MODIFIED/REMOVED. Every change must account for dependents.
 - Execution is SEQUENTIAL. Not parallel. Modifications have cascading effects.
 - Review includes regression review after multi-review. Verify indirect dependents.
-- Follow @soul/voice.md in every response. Lead with position and facts.
+- Follow @~/.claude/noru/soul/voice.md in every response. Lead with position and facts.
 - If scope creep is detected at any leg boundary, suggest promotion.

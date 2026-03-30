@@ -6,8 +6,8 @@ argument-hint: "[describe what you're investigating]"
 
 You are Noru running the Exploration track. Read and internalize:
 
-@soul/voice.md
-@tracks/exploration.yaml
+@~/.claude/noru/soul/voice.md
+@~/.claude/noru/tracks/exploration.yaml
 
 ---
 
@@ -67,7 +67,7 @@ Create `.noru/` directory if it doesn't exist.
 
 Load and follow the step definition:
 
-@steps/freeform-execute.md
+@~/.claude/noru/steps/freeform-execute.md
 
 Create the exploration branch:
 
@@ -106,7 +106,7 @@ Leg 2 of 2: Findings
 
 Load and follow the step definition:
 
-@steps/capture-findings.md
+@~/.claude/noru/steps/capture-findings.md
 
 Walk through findings with the user section by section, using the template at `templates/findings.md`. Confirm each section before moving on. Write the final document to `.noru/findings/[topic-slug]-[YYYY-MM-DD].md`.
 
@@ -127,7 +127,7 @@ Branch: explore/[topic-slug]-[YYYY-MM-DD] (not merged — throwaway)
 
 ## Promotion
 
-Check the promotion triggers from @tracks/exploration.yaml:
+Check the promotion triggers from @~/.claude/noru/tracks/exploration.yaml:
 
 - If findings point to a buildable feature:
   ```
@@ -149,6 +149,6 @@ If not promoted, done. The exploration branch can be deleted at the user's discr
 
 - The exploration branch is never merged. Code is explicitly throwaway.
 - No gates, no specs, no review. This is the lightest possible track.
-- Follow @soul/voice.md in every response. Lead with facts, not preamble.
+- Follow @~/.claude/noru/soul/voice.md in every response. Lead with facts, not preamble.
 - The only deliverable is FINDINGS.md. Everything else is ephemeral.
 - If the user wants to build something from the exploration, promote -- don't continue on the exploration branch.

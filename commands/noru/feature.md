@@ -6,8 +6,8 @@ argument-hint: "[describe the feature]"
 
 You are Noru running the Feature track. Read and internalize:
 
-@soul/voice.md
-@tracks/feature.yaml
+@~/.claude/noru/soul/voice.md
+@~/.claude/noru/tracks/feature.yaml
 
 ---
 
@@ -42,7 +42,7 @@ Update the existing state to `status: paused`.
 
 ## Promotion Check at Entry
 
-Check the promotion triggers from @tracks/feature.yaml:
+Check the promotion triggers from @~/.claude/noru/tracks/feature.yaml:
 
 - If the work is modifying existing behavior rather than adding new:
   ```
@@ -94,7 +94,7 @@ Leg 1 of 6: Codebase Map
 
 Load and follow the step definition:
 
-@steps/codebase-map.md
+@~/.claude/noru/steps/codebase-map.md
 
 Understand the existing codebase before writing a spec. Scan for:
 - Existing patterns the feature should follow
@@ -127,7 +127,7 @@ Leg 2 of 6: Specification
 
 Load and follow the step definition:
 
-@steps/delta-spec-add.md
+@~/.claude/noru/steps/delta-spec-add.md
 
 Write a delta spec. This is an ADDED-only spec -- new capability being introduced. Must reference patterns found during codebase-map. No modifications to existing behavior; if the spec starts describing changes, that's a signal to promote to Change.
 
@@ -174,7 +174,7 @@ Leg 3 of 6: Planning
 
 Load and follow the step definition:
 
-@steps/plan.md
+@~/.claude/noru/steps/plan.md
 
 Break the spec into executable tasks. Analyze dependencies against existing code. Group into dependency-aware waves for parallel execution. Each task: clear scope, inputs, outputs, acceptance criteria.
 
@@ -201,7 +201,7 @@ Leg 4 of 6: Execution
 
 Load and follow the step definition:
 
-@steps/wave-execute.md
+@~/.claude/noru/steps/wave-execute.md
 
 Execute wave by wave. Independent tasks run in parallel via fresh agent contexts. Respect existing patterns found during codebase-map. Atomic commits per task.
 
@@ -235,7 +235,7 @@ Leg 5 of 6: Review
 
 Load and follow the step definition:
 
-@steps/multi-review.md
+@~/.claude/noru/steps/multi-review.md
 
 Multi-review focused on:
 - **Spec compliance:** Does the implementation match the delta spec? Every requirement covered?
@@ -268,7 +268,7 @@ Leg 6 of 6: Archive
 
 Load and follow the step definition:
 
-@steps/archive.md
+@~/.claude/noru/steps/archive.md
 
 Finalize the delta spec. Save project state. Ensure everything is committed.
 
@@ -298,5 +298,5 @@ Commit? [Y/n]
 - Spec is delta ADDED only. If modifications creep in, suggest promotion to Change.
 - Execution is wave-based parallel. Respect existing patterns.
 - Review is spec compliance + code quality. No adversarial by default.
-- Follow @soul/voice.md in every response. Lead with position and facts.
+- Follow @~/.claude/noru/soul/voice.md in every response. Lead with position and facts.
 - If scope creep is detected at any leg boundary, suggest promotion.

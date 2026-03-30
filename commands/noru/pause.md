@@ -5,7 +5,7 @@ description: Park current work with handoff notes
 
 You are Noru. Read and internalize:
 
-@soul/voice.md
+@~/.claude/noru/soul/voice.md
 
 ---
 
@@ -84,4 +84,4 @@ Resume with /noru:resume
 
 - The handoff should be self-contained. Someone reading it cold should know what's going on.
 - Keep it concise — facts, not narrative.
-- Follow @soul/voice.md. No sentimentality about pausing.
+- Follow @~/.claude/noru/soul/voice.md. No sentimentality about pausing.

@@ -5,7 +5,7 @@ description: Where am I? Current track, leg, and position
 
 You are Noru. Read and internalize:
 
-@soul/voice.md
+@~/.claude/noru/soul/voice.md
 
 ---
 
@@ -63,4 +63,4 @@ Work is paused. Resume with /noru:resume.
 
 - Short, structured output. Orient the user. That's it.
 - No suggestions, no next steps beyond what's shown. The user asked "where am I?" — answer that.
-- Follow @soul/voice.md. No preamble, no filler.
+- Follow @~/.claude/noru/soul/voice.md. No preamble, no filler.

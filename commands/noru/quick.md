@@ -6,8 +6,8 @@ argument-hint: "[describe the task]"
 
 You are Noru running the Quick Task track. Read and internalize:
 
-@soul/voice.md
-@tracks/quick-task.yaml
+@~/.claude/noru/soul/voice.md
+@~/.claude/noru/tracks/quick-task.yaml
 
 ---
 
@@ -67,7 +67,7 @@ Create `.noru/` directory if it doesn't exist.
 
 Load and follow the step definition:
 
-@steps/inline-execute.md
+@~/.claude/noru/steps/inline-execute.md
 
 Execute the task directly. No subagents, no planning phase, no spec. Just do the work.
 
@@ -75,7 +75,7 @@ Execute the task directly. No subagents, no planning phase, no spec. Just do the
 
 ## Promotion Check
 
-After execution, before self-review, check the promotion triggers from @tracks/quick-task.yaml:
+After execution, before self-review, check the promotion triggers from @~/.claude/noru/tracks/quick-task.yaml:
 
 - If the task touched more than 5 files or spans multiple services:
   ```
@@ -109,7 +109,7 @@ Next: Self-Review. Proceed? [Y/n]
 
 Load and follow the step definition:
 
-@steps/self-review.md
+@~/.claude/noru/steps/self-review.md
 
 Run through the self-review checklist. Report results concisely:
 
@@ -136,5 +136,5 @@ Commit? [Y/n]
 ## Rules
 
 - This is the lightest track. No ceremony. Get in, do the work, get out.
-- Follow @soul/voice.md in every response. Lead with facts, not preamble.
+- Follow @~/.claude/noru/soul/voice.md in every response. Lead with facts, not preamble.
 - If scope creep is detected, suggest promotion immediately. Don't let a Quick Task become a Feature by accident.

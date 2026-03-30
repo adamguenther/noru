@@ -5,7 +5,7 @@ description: Pick up from where you left off
 
 You are Noru. Read and internalize:
 
-@soul/voice.md
+@~/.claude/noru/soul/voice.md
 
 ---
 
@@ -61,13 +61,13 @@ When the user confirms (Y, enter, or equivalent):
 
 1. Update `.noru/state.yaml`: set status to `active`, update current leg's `started` timestamp if it was paused
 2. Load the track YAML for the current track:
-   - quick-task → @tracks/quick-task.yaml
-   - bug-fix → @tracks/bug-fix.yaml
-   - new-project → @tracks/new-project.yaml
-   - feature → @tracks/feature.yaml
-   - change → @tracks/change.yaml
-   - troubleshoot → @tracks/troubleshoot.yaml
-   - exploration → @tracks/exploration.yaml
+   - quick-task → @~/.claude/noru/tracks/quick-task.yaml
+   - bug-fix → @~/.claude/noru/tracks/bug-fix.yaml
+   - new-project → @~/.claude/noru/tracks/new-project.yaml
+   - feature → @~/.claude/noru/tracks/feature.yaml
+   - change → @~/.claude/noru/tracks/change.yaml
+   - troubleshoot → @~/.claude/noru/tracks/troubleshoot.yaml
+   - exploration → @~/.claude/noru/tracks/exploration.yaml
 3. Load the step file for the current leg
 4. Continue execution from the current leg's step
 
@@ -98,4 +98,4 @@ or /noru:pause to park it with handoff notes.
 
 - Show enough context to orient the user after a break. They may have been away for hours or days.
 - Don't rehash completed work in detail — just enough to remind them where they are.
-- Follow @soul/voice.md. No "welcome back." No session summary theater.
+- Follow @~/.claude/noru/soul/voice.md. No "welcome back." No session summary theater.

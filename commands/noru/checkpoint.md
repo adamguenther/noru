@@ -6,7 +6,7 @@ argument-hint: "[optional note]"
 
 You are Noru. Read and internalize:
 
-@soul/voice.md
+@~/.claude/noru/soul/voice.md
 
 ---
 
@@ -61,4 +61,4 @@ Checkpoint saved: [timestamp]
 
 - This is a manual save point. Keep it fast and minimal.
 - Don't change the active state — just snapshot it.
-- Follow @soul/voice.md. One or two lines of output, done.
+- Follow @~/.claude/noru/soul/voice.md. One or two lines of output, done.

@@ -6,9 +6,9 @@ argument-hint: "[describe what you're working on]"
 
 You are Noru. Read and internalize these before doing anything:
 
-@soul/voice.md
-@soul/principles.md
-@soul/routing.md
+@~/.claude/noru/soul/voice.md
+@~/.claude/noru/soul/principles.md
+@~/.claude/noru/soul/routing.md
 
 ---
 
@@ -62,7 +62,7 @@ Wait for the response. Use it as the work description.
 
 ## Step 3: Route
 
-Analyze the description against the signal-to-track mapping in @soul/routing.md.
+Analyze the description against the signal-to-track mapping in @~/.claude/noru/soul/routing.md.
 
 Also check codebase state:
 - Empty repo / no source files → New Project (regardless of description)
@@ -80,13 +80,13 @@ Leg 1 of N: [Leg Name]
 Then load the track's YAML definition and begin executing the first leg's step.
 
 Available tracks and their definitions:
-- Quick Task → @tracks/quick-task.yaml
-- Bug Fix → @tracks/bug-fix.yaml
-- New Project → @tracks/new-project.yaml
-- Feature → @tracks/feature.yaml
-- Change → @tracks/change.yaml
-- Troubleshoot → @tracks/troubleshoot.yaml
-- Exploration → @tracks/exploration.yaml
+- Quick Task → @~/.claude/noru/tracks/quick-task.yaml
+- Bug Fix → @~/.claude/noru/tracks/bug-fix.yaml
+- New Project → @~/.claude/noru/tracks/new-project.yaml
+- Feature → @~/.claude/noru/tracks/feature.yaml
+- Change → @~/.claude/noru/tracks/change.yaml
+- Troubleshoot → @~/.claude/noru/tracks/troubleshoot.yaml
+- Exploration → @~/.claude/noru/tracks/exploration.yaml
 
 ### Low Confidence
 
@@ -130,14 +130,14 @@ Create the `.noru/` directory if it doesn't exist.
 Load the track's YAML definition. Read the step file for the first leg. Execute it.
 
 For Quick Task legs, the step files are:
-- inline-execute → @steps/inline-execute.md
-- self-review → @steps/self-review.md
+- inline-execute → @~/.claude/noru/steps/inline-execute.md
+- self-review → @~/.claude/noru/steps/self-review.md
 
 For Bug Fix legs, the step files are:
-- reproduce → @steps/reproduce.md
-- root-cause → @steps/root-cause.md
-- targeted-fix → @steps/targeted-fix.md
-- verify-suite → @steps/verify-suite.md
+- reproduce → @~/.claude/noru/steps/reproduce.md
+- root-cause → @~/.claude/noru/steps/root-cause.md
+- targeted-fix → @~/.claude/noru/steps/targeted-fix.md
+- verify-suite → @~/.claude/noru/steps/verify-suite.md
 
 For other tracks, load the corresponding step files from the `steps/` directory.
 
@@ -182,4 +182,4 @@ If accepted, transfer state using the promote flow — carry forward description
 - Suggest, don't demand. Track selection and promotion are always suggestions with `[Y/enter]` as default.
 - Silence between legs. When working, work. No progress narration.
 - Errors are course corrections. Wrong track? Fix it, carry work forward, move on.
-- Follow @soul/voice.md in every response. No sycophancy, no theater, no banned phrases.
+- Follow @~/.claude/noru/soul/voice.md in every response. No sycophancy, no theater, no banned phrases.

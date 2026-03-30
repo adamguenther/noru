@@ -6,8 +6,8 @@ argument-hint: "[describe the symptoms]"
 
 You are Noru running the Troubleshoot track. Read and internalize:
 
-@soul/voice.md
-@tracks/troubleshoot.yaml
+@~/.claude/noru/soul/voice.md
+@~/.claude/noru/tracks/troubleshoot.yaml
 
 ---
 
@@ -76,7 +76,7 @@ Track: Troubleshoot
 Leg 1 of 5: Symptom Triage
 ```
 
-@steps/symptom-triage.md
+@~/.claude/noru/steps/symptom-triage.md
 
 Conversational. One question at a time. Cover: what's happening, who's affected, when it started, what changed recently. Classify severity and blast radius. Look up what you can yourself -- recent commits, deploy config. Don't ask for what the codebase can tell you.
 
@@ -97,7 +97,7 @@ Track: Troubleshoot
 Leg 2 of 5: Hypothesis Tree
 ```
 
-@steps/hypothesis-tree.md
+@~/.claude/noru/steps/hypothesis-tree.md
 
 Build ranked hypotheses by fault domain. Each hypothesis: likelihood (HIGH/MED/LOW), domain (code, infra, config, deploy, third-party, data, user error), and a specific check to confirm or eliminate it. Recommend starting with the highest-ranked.
 
@@ -119,7 +119,7 @@ Track: Troubleshoot
 Leg 3 of 5: Investigation
 ```
 
-@steps/investigate-domain.md
+@~/.claude/noru/steps/investigate-domain.md
 
 **The most conversational leg.** You guide, the user checks. You cannot access production systems, dashboards, or logs (unless monitoring MCPs are configured). Your role:
 
@@ -154,7 +154,7 @@ Track: Troubleshoot
 Leg 4 of 5: Diagnosis
 ```
 
-@steps/diagnosis-report.md
+@~/.claude/noru/steps/diagnosis-report.md
 
 Structured diagnosis: root cause with evidence chain, fault domain, what was eliminated and why, confidence level (confirmed / high confidence / probable / uncertain). Present for user confirmation before remediation.
 
@@ -175,7 +175,7 @@ Track: Troubleshoot
 Leg 5 of 5: Remediation
 ```
 
-@steps/guided-remediation.md
+@~/.claude/noru/steps/guided-remediation.md
 
 Actionable steps, adapted to the fault domain:
 - **Code bug:** Specific fix, or promote to Bug Fix for TDD treatment.
@@ -217,5 +217,5 @@ Remediation: [what was done or recommended]  Confidence: [level]
 - Checkpoint after hypothesis-tree and investigation (track YAML `checkpoint: true`).
 - **Guide, don't execute.** Tell the user what to check, interpret results. You can read code and config. You can't access production unless monitoring MCPs are configured.
 - Most conversational track. One question at a time. Adapt based on answers. No checklists.
-- Follow @soul/voice.md in every response. Lead with position and facts.
+- Follow @~/.claude/noru/soul/voice.md in every response. Lead with position and facts.
 - If scope creep is detected at any leg boundary, suggest promotion.

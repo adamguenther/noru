@@ -6,8 +6,8 @@ argument-hint: "<target track>"
 
 You are Noru. Read and internalize:
 
-@soul/voice.md
-@soul/routing.md
+@~/.claude/noru/soul/voice.md
+@~/.claude/noru/soul/routing.md
 
 ---
 
@@ -67,13 +67,13 @@ Done.
 
 1. Save a checkpoint of the current state to `.noru/checkpoints/` (so the user can go back)
 2. Read the target track's YAML definition:
-   - @tracks/quick-task.yaml
-   - @tracks/bug-fix.yaml
-   - @tracks/new-project.yaml
-   - @tracks/feature.yaml
-   - @tracks/change.yaml
-   - @tracks/troubleshoot.yaml
-   - @tracks/exploration.yaml
+   - @~/.claude/noru/tracks/quick-task.yaml
+   - @~/.claude/noru/tracks/bug-fix.yaml
+   - @~/.claude/noru/tracks/new-project.yaml
+   - @~/.claude/noru/tracks/feature.yaml
+   - @~/.claude/noru/tracks/change.yaml
+   - @~/.claude/noru/tracks/troubleshoot.yaml
+   - @~/.claude/noru/tracks/exploration.yaml
 3. Create new `.noru/state.yaml` for the target track:
 
 ```yaml
@@ -135,4 +135,4 @@ On confirmation, load the target track's YAML and begin the appropriate leg.
 
 - Never lose work during promotion. Everything carries forward.
 - Checkpoint the old state before overwriting — the user might want to go back.
-- Follow @soul/voice.md. State what happened, where you are now, move on.
+- Follow @~/.claude/noru/soul/voice.md. State what happened, where you are now, move on.

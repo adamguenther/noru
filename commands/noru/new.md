@@ -6,8 +6,8 @@ argument-hint: "[describe what you're building]"
 
 You are Noru running the New Project track. Read and internalize:
 
-@soul/voice.md
-@tracks/new-project.yaml
+@~/.claude/noru/soul/voice.md
+@~/.claude/noru/tracks/new-project.yaml
 
 ---
 
@@ -104,7 +104,7 @@ Leg 1 of 8: Discovery
 
 Load and follow the step definition:
 
-@steps/discovery.md
+@~/.claude/noru/steps/discovery.md
 
 This is the only track that starts with open-ended conversation. No forms. No checklists. Ask iteratively, one question at a time, building understanding. Cover:
 
@@ -139,7 +139,7 @@ Leg 2 of 8: Research
 
 Load and follow the step definition:
 
-@steps/ecosystem-research.md
+@~/.claude/noru/steps/ecosystem-research.md
 
 Spawn parallel subagents to investigate:
 - Ecosystem: libraries, frameworks, and tools relevant to the project
@@ -171,7 +171,7 @@ Leg 3 of 8: Specification
 
 Load and follow the step definition:
 
-@steps/full-spec.md
+@~/.claude/noru/steps/full-spec.md
 
 Write the full spec. This is a greenfield project -- everything is ADDED. Requirements, constraints, acceptance criteria, and all decisions from discovery and research baked in. Present the spec for user review and confirmation before proceeding.
 
@@ -198,7 +198,7 @@ Leg 4 of 8: Architecture
 
 Load and follow the step definition:
 
-@steps/architecture.md
+@~/.claude/noru/steps/architecture.md
 
 Design the system architecture: component structure, data model, API contracts, integration points. Document key decisions as ADRs (Architecture Decision Records). Present the architecture for user review.
 
@@ -233,7 +233,7 @@ Leg 5 of 8: Planning
 
 Load and follow the step definition:
 
-@steps/plan.md
+@~/.claude/noru/steps/plan.md
 
 Break the spec and architecture into executable tasks. Group into dependency-aware waves -- independent tasks that can run in parallel within each wave, sequential waves that must run in order. Each task: clear scope, inputs, outputs, acceptance criteria.
 
@@ -260,7 +260,7 @@ Leg 6 of 8: Execution
 
 Load and follow the step definition:
 
-@steps/wave-execute.md
+@~/.claude/noru/steps/wave-execute.md
 
 Execute wave by wave. Within each wave, independent tasks run in parallel via fresh agent contexts. Sequential tasks within a wave run in order. Atomic commits per task.
 
@@ -294,7 +294,7 @@ Leg 7 of 8: Review
 
 Load and follow the step definition:
 
-@steps/multi-review.md
+@~/.claude/noru/steps/multi-review.md
 
 Full multi-review:
 - **Spec compliance:** Does the implementation match the spec? Every requirement covered?
@@ -326,7 +326,7 @@ Leg 8 of 8: Archive
 
 Load and follow the step definition:
 
-@steps/archive.md
+@~/.claude/noru/steps/archive.md
 
 Finalize the spec. Save project state. Ensure everything is committed and the project is handoff-ready.
 
@@ -358,5 +358,5 @@ Ready to ship.
 - Architecture produces ADRs for key decisions.
 - Execution is wave-based parallel. Fresh context per agent. Atomic commits per task.
 - Review includes adversarial review for critical paths. This is a greenfield project -- get it right before it ships.
-- Follow @soul/voice.md in every response. Lead with position and facts.
+- Follow @~/.claude/noru/soul/voice.md in every response. Lead with position and facts.
 - If scope creep is detected at any leg boundary, suggest promotion or scope adjustment.
