@@ -25,6 +25,7 @@ function globalPaths() {
     commands: path.join(claude, "commands", "noru"),
     hooks: path.join(claude, "hooks", "noru"),
     settings: path.join(claude, "settings.json"),
+    noruRoot: path.join(claude, "noru"), // symlink for soul/tracks/steps references
   };
 }
 
@@ -35,6 +36,7 @@ function localPaths() {
     commands: path.join(claude, "commands", "noru"),
     hooks: path.join(claude, "hooks", "noru"),
     settings: path.join(claude, "settings.json"),
+    noruRoot: path.join(claude, "noru"),
   };
 }
 
@@ -79,11 +81,11 @@ function hasHookFiles() {
 
 // The noru SessionStart hook entry. This gets appended to the hooks array
 // only if no existing entry matches. Adjust when hooks are actually created.
-function noruHookEntry() {
+function noruHookEntry(hooksDir) {
   return {
     hooks: [
       {
-        command: `node "${path.join(HOME, ".claude", "hooks", "noru", "session-start.js")}"`,
+        command: path.join(hooksDir || path.join(HOME, ".claude", "hooks", "noru"), "session-start"),
         type: "command",
       },
     ],
@@ -113,7 +115,7 @@ function hasNoruHook(settings) {
   );
 }
 
-function mergeHookSettings(settingsPath) {
+function mergeHookSettings(settingsPath, hooksDir) {
   if (!hasHookFiles()) return false;
 
   backupSettings(settingsPath);
@@ -124,7 +126,7 @@ function mergeHookSettings(settingsPath) {
   if (!settings.hooks) settings.hooks = {};
   if (!Array.isArray(settings.hooks.SessionStart)) settings.hooks.SessionStart = [];
 
-  settings.hooks.SessionStart.push(noruHookEntry());
+  settings.hooks.SessionStart.push(noruHookEntry(hooksDir));
 
   ensureDir(path.dirname(settingsPath));
   fs.writeFileSync(settingsPath, JSON.stringify(settings, null, 2) + "\n");
@@ -208,23 +210,45 @@ function install(paths) {
     log(`  Commands:  ${paths.commands} (symlinked)`);
   }
 
-  // 2. Copy hooks
+  // 2. Symlink noru root (for @~/.claude/noru/soul/* references in commands)
+  if (fs.existsSync(paths.noruRoot)) {
+    try {
+      const stat = fs.lstatSync(paths.noruRoot);
+      if (stat.isSymbolicLink() && fs.realpathSync(paths.noruRoot) === fs.realpathSync(NORU_ROOT)) {
+        log(`  Root:      ${paths.noruRoot} (already linked)`);
+      } else {
+        log(`  Root:      ${paths.noruRoot} exists (skipped)`);
+      }
+    } catch {
+      log(`  Root:      ${paths.noruRoot} exists (skipped)`);
+    }
+  } else {
+    fs.symlinkSync(NORU_ROOT, paths.noruRoot);
+    log(`  Root:      ${paths.noruRoot} (symlinked)`);
+  }
+
+  // 3. Copy hooks
   if (copyHooks(paths.hooks)) {
+    // Make session-start executable
+    const sessionStart = path.join(paths.hooks, "session-start");
+    if (fs.existsSync(sessionStart)) {
+      try { fs.chmodSync(sessionStart, 0o755); } catch { /* Windows */ }
+    }
     log(`  Hooks:     ${paths.hooks} (copied)`);
   } else {
     log(`  Hooks:     (none to install)`);
   }
 
-  // 3. Merge settings
+  // 4. Merge settings
   if (hasHookFiles()) {
-    if (mergeHookSettings(paths.settings)) {
+    if (mergeHookSettings(paths.settings, paths.hooks)) {
       log(`  Settings:  ${paths.settings} (merged)`);
     } else {
       log(`  Settings:  ${paths.settings} (already configured)`);
     }
   }
 
-  log(`\nDone. Run /noru in Claude Code to get started.\n`);
+  log(`\nDone. Run /noru:go in Claude Code to get started.\n`);
 }
 
 // ---------------------------------------------------------------------------
@@ -245,6 +269,18 @@ function uninstall() {
       } else {
         log(`  Skipped:   ${paths.commands} (not a noru symlink)`);
       }
+    }
+
+    // Remove noru root symlink
+    if (fs.existsSync(paths.noruRoot)) {
+      try {
+        const stat = fs.lstatSync(paths.noruRoot);
+        if (stat.isSymbolicLink()) {
+          fs.unlinkSync(paths.noruRoot);
+          log(`  Removed:   ${paths.noruRoot}`);
+          removed = true;
+        }
+      } catch { /* ignore */ }
     }
 
     if (removeHooks(paths.hooks)) {

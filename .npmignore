@@ -1,0 +1,6 @@
+.git
+.gitkeep
+tests/
+docs/
+.DS_Store
+*.log

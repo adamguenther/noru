@@ -1,6 +1,6 @@
 {
   "name": "noru",
-  "description": "AI agent orchestration — describe what you're doing, get routed to the right workflow",
+  "description": "AI agent orchestration — describe what you're doing, get routed to the right workflow. 7 tracks, 12 commands, scale-adaptive ceremony.",
   "version": "0.1.0",
   "author": {
     "name": "adamguenther"
@@ -9,10 +9,12 @@
   "repository": "https://github.com/adamguenther/noru",
   "license": "MIT",
   "keywords": [
+    "claude-code",
     "orchestration",
     "workflow",
     "agent",
     "tracks",
-    "routing"
+    "routing",
+    "noru"
   ]
 }

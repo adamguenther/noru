@@ -47,19 +47,19 @@ Noru has seven tracks. Each defines a workflow shape matched to the type of work
 ## Install
 
 ```bash
-# Via npx (recommended)
-npx noru
+# Claude Code plugin (recommended)
+claude plugin install noru
 
-# Or install globally, then run
-npm install -g noru
-noru install
+# Or via npx
+npx noru install
 
-# Or manual
-git clone https://github.com/adamguenther/noru.git
-cd noru && node bin/install.js install
+# Or one-liner (no npm required)
+git clone https://github.com/adamguenther/noru.git ~/.claude/noru && ln -s ~/.claude/noru/commands/noru ~/.claude/commands/noru
 ```
 
-The installer symlinks noru's commands into your Claude Code configuration and sets up session hooks for personality injection. Run `npx noru` with no arguments for interactive mode.
+The installer symlinks noru's commands and soul files into `~/.claude/` and sets up session hooks. Run `npx noru` with no arguments for interactive mode.
+
+To uninstall: `npx noru uninstall` or `claude plugin uninstall noru`
 
 ## Quick Start
 
