@@ -3,6 +3,7 @@ name: plan
 display_name: Plan
 execution_mode: subagent
 description: "Break the spec into executable tasks with dependency graph and parallel execution waves."
+agent: noru-planner
 ---
 
 ## Objective

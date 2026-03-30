@@ -30,18 +30,26 @@ Review the implementation through multiple independent lenses. Each review reads
    - Check: naming clarity, function size, abstraction level.
    - Check: error handling, edge cases, maintainability.
 
-4. **Adversarial review (New Project critical paths only).**
+4. **Test coverage review (Feature, Change, New Project tracks).**
+   - Spawn noru-reviewer with the changed/added files and the project's test directory.
+   - Check: does every new public function, endpoint, or behavior have a corresponding test?
+   - Check: do modified behaviors have updated tests reflecting the new behavior?
+   - Check: are test assertions verifying actual behavior, not just that code runs without error?
+   - Exempt: configuration files, type definitions, pure re-exports, and trivially simple glue code.
+   - If tests are missing: list each gap with the file, function/behavior, and what a test should cover.
+
+5. **Adversarial review (New Project critical paths only).**
    - Spawn noru-reviewer with instructions to find issues. Minimum: 1 issue.
    - This reviewer assumes the code has problems and looks for them.
    - Covers: security, performance, race conditions, failure modes.
 
-5. **Fix cycle.** Issues found by any review are fixed, then the failing review re-runs until clean. Self-review fixes are applied inline. Subagent review fixes get their own atomic commits.
+6. **Fix cycle.** Issues found by any review are fixed, then the failing review re-runs until clean. Self-review fixes are applied inline. Subagent review fixes get their own atomic commits. Missing tests from the coverage review are written and committed before re-review.
 
 ## User Interaction
 
-- Before starting: "Running review — spec compliance, code quality..."
+- Before starting: "Running review — spec compliance, test coverage, code quality..."
 - Report each review result as it completes.
-- If all clean: compact summary. "Self-review, spec compliance, quality -- all clear."
+- If all clean: compact summary. "Self-review, spec compliance, test coverage, quality -- all clear."
 - If issues found: list them, fix, report the re-review result.
 - Do not ask permission to fix obvious issues (placeholder left behind, lint violation). Just fix and report.
 

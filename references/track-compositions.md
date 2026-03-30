@@ -45,7 +45,7 @@ Canonical reference for leg ordering, checkpoints, and execution mode per track.
 | 2 | Specification | delta-spec-mod | yes |
 | 3 | Planning | plan | no |
 | 4 | Execution | sequential-execute | yes |
-| 5 | Review | multi-review (includes regression) | no |
+| 5 | Review | multi-review | no |
 | 6 | Archive | archive | no |
 
 ### Bug Fix

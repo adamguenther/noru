@@ -98,3 +98,5 @@ When signals from multiple tracks appear in the same description:
 3. Troubleshoot beats Bug Fix when production/user-facing signals appear. "Users reporting login bugs" is Troubleshoot.
 
 4. Quick Task is a size signal, not a type signal. "Quick fix" is Bug Fix. "Quick feature" is Feature. Only route to Quick Task when scope is small AND no other track signal is stronger.
+
+5. Change beats Quick Task when shared words like "rename" appear. "Rename the config key" is Quick Task (small scope, single file). "Rename the auth module across the codebase" is Change (wide blast radius). Use scope to disambiguate — if it touches more than a few files or requires impact analysis, it's Change.
