@@ -1,5 +1,5 @@
 {
-  "name": "noru",
+  "name": "@adamguenther/noru",
   "version": "0.1.0",
   "description": "Describe what you're doing. Noru routes to the right workflow.",
   "bin": {
