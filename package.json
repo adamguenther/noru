@@ -1,6 +1,6 @@
 {
   "name": "@adamguenther/noru",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Describe what you're doing. Noru routes to the right workflow.",
   "bin": {
     "noru": "bin/install.js"
