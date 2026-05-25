@@ -13,6 +13,8 @@
 | `legs` | array | yes | Ordered leg status objects. Empty when no track active. |
 | `decisions` | array | yes | Decisions locked during this track. Empty at start. |
 | `files_in_scope` | array | no | Files identified as relevant. Populated during analysis legs. |
+| `codebase_map` | object | no | Current reusable codebase map metadata for existing-code tracks. |
+| `exploration` | object | no | Exploration frame and artifact paths. Present for Exploration tracks. |
 
 ### Leg Object
 
@@ -30,6 +32,30 @@
 | `id` | string | Sequential ID (e.g., `D-01`, `D-02`). |
 | `text` | string | What was decided. |
 | `reason` | string | Why this option was chosen. |
+
+### Codebase Map Object
+
+| Field | Type | Description |
+|---|---|---|
+| `path` | string | Usually `.noru/codebase-map.md`. |
+| `base_ref` | string | Selected base ref, preferring `origin/main`, `main`, `origin/master`, then `master`. |
+| `base_sha` | string | Commit SHA for the selected base ref when the map was generated or reused. |
+| `head_sha` | string | Current `HEAD` SHA when the map was generated or reused. |
+| `status` | enum | `current` \| `refreshed` \| `not_applicable` |
+
+See `references/codebase-map-lifecycle.md` for freshness rules.
+
+### Exploration Object
+
+| Field | Type | Description |
+|---|---|---|
+| `question` | string | What the exploration is trying to learn. |
+| `scope` | string | Areas in and out of scope. |
+| `constraints` | string | Timebox, tools, data, or safety limits. |
+| `stop_condition` | string | Evidence needed to stop exploring. |
+| `branch` | string | Throwaway exploration branch. |
+| `log_path` | string | Working experiment log path. |
+| `findings_path` | string | Final findings document path. |
 
 ## Example: Bug Fix In Progress
 
@@ -63,6 +89,12 @@ decisions:
     reason: "Bug fix scope -- Money value object is a follow-up Change"
 files_in_scope:
   - /src/checkout/currency.ts
+codebase_map:
+  path: .noru/codebase-map.md
+  base_ref: origin/main
+  base_sha: abc123
+  head_sha: def456
+  status: current
 ```
 
 ## Example: Completed Quick Task

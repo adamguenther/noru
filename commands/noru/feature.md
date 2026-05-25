@@ -102,6 +102,10 @@ Load and follow the step definition:
 
 @~/.claude/noru/steps/codebase-map.md
 
+This leg must create or refresh `.noru/codebase-map.md` before specification. If
+the map already exists and is current against the selected main/master base and
+current `HEAD`, reuse it and summarize the relevant parts.
+
 Understand the existing codebase before writing a spec. Scan for:
 - Existing patterns the feature should follow
 - Files that will need modification or extension

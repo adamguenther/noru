@@ -181,6 +181,46 @@ for mapping in "${TRACK_COMMANDS[@]}"; do
   fi
 done
 
+# ── Test: Existing-code tracks require codebase-map lifecycle ──
+
+category "Codebase map lifecycle"
+
+lifecycle_ref="$REFERENCES_DIR/codebase-map-lifecycle.md"
+if [ -f "$lifecycle_ref" ]; then
+  pass "codebase-map lifecycle reference exists"
+else
+  fail "codebase-map lifecycle reference" "references/codebase-map-lifecycle.md not found"
+fi
+
+if grep -q "codebase-map-lifecycle.md" "$COMMANDS_DIR/go.md"; then
+  pass "go command references codebase-map lifecycle"
+else
+  fail "go command" "doesn't reference codebase-map lifecycle"
+fi
+
+if grep -q "codebase-map-lifecycle.md" "$STEPS_DIR/codebase-map.md"; then
+  pass "codebase-map step references lifecycle"
+else
+  fail "codebase-map step" "doesn't reference lifecycle"
+fi
+
+FIRST_STEP_FEATURE=$(yq -r '.legs[0].step' "$TRACKS_DIR/feature.yaml")
+if [ "$FIRST_STEP_FEATURE" = "codebase-map" ]; then
+  pass "feature: first leg is codebase-map"
+else
+  fail "feature first leg" "expected codebase-map, got $FIRST_STEP_FEATURE"
+fi
+
+EXISTING_CODE_COMMANDS=("change" "fix" "quick" "troubleshoot" "explore" "new")
+for cmd_name in "${EXISTING_CODE_COMMANDS[@]}"; do
+  cmd_file="$COMMANDS_DIR/${cmd_name}.md"
+  if grep -q "codebase-map-lifecycle.md" "$cmd_file" && grep -q ".noru/codebase-map.md" "$cmd_file"; then
+    pass "$cmd_name: requires codebase-map preflight"
+  else
+    fail "$cmd_name codebase-map preflight" "missing lifecycle reference or artifact path"
+  fi
+done
+
 # ── Test: State template matches schema defaults ──
 
 category "State template vs schema"

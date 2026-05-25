@@ -105,7 +105,7 @@ Some promotions can skip early legs because the work was already done:
 
 - Promoting from Bug Fix (after root cause) to Change → can skip Impact Analysis (root cause serves as impact analysis)
 - Promoting from Quick Task to Feature → start from Leg 1 (Codebase Map)
-- Promoting from Exploration to Feature → start from Leg 1 but carry findings as research input
+- Promoting from Exploration → start from Leg 1 of the target track but carry findings, experiment log, evidence summary, and recommendation as input
 - Promoting from Troubleshoot (after diagnosis) to Bug Fix → can skip Reproduce (diagnosis serves as reproduction)
 
 State what was carried forward and where the new track starts.

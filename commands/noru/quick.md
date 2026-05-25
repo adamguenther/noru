@@ -42,6 +42,22 @@ Update the existing state to `status: paused`.
 
 ---
 
+## Codebase Map Preflight
+
+This is existing-code work. Before initializing the track, read and follow:
+
+@~/.claude/noru/references/codebase-map-lifecycle.md
+
+If `.noru/codebase-map.md` is missing or stale against the selected main/master
+base and current `HEAD`, load and run:
+
+@~/.claude/noru/steps/codebase-map.md
+
+Continue only after the map exists and is current. Keep the report short; Quick
+Task stays light, but it should not work from a missing or stale map.
+
+---
+
 ## Initialize State
 
 Create or update `.noru/state.yaml`:
@@ -61,6 +77,12 @@ legs:
   - id: self-review
     status: pending
 decisions: []
+codebase_map:
+  path: .noru/codebase-map.md
+  base_ref: [selected base ref]
+  base_sha: [selected base sha]
+  head_sha: [current HEAD sha]
+  status: [current | refreshed]
 ```
 
 Create `.noru/` directory if it doesn't exist.

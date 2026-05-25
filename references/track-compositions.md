@@ -77,12 +77,30 @@ Canonical reference for leg ordering, checkpoints, and execution mode per track.
 | 1 | Explore | freeform-execute | no |
 | 2 | Findings | capture-findings | no |
 
+Exploration keeps two legs, but the Explore leg has required internal structure:
+frame the question, define scope and stop condition, create a throwaway branch,
+and maintain `.noru/explorations/[topic]/log.md`. Findings must be evidence-backed;
+the final deliverable is `.noru/findings/[topic]-[YYYY-MM-DD].md`.
+
 ## Execution Modes
 
 - **parallel** -- Tasks grouped into dependency waves. Independent tasks run concurrently via subagents (wave-execute).
 - **sequential** -- Tasks run one at a time via subagents (sequential-execute). Safer for modifications with cascading effects.
 - **inline** -- Direct execution in the current context. No subagents spawned.
 - **interactive** -- Conversational. Noru guides, user provides observations and data.
+
+## Existing-Code Preflight
+
+Before any existing-code track begins its first leg, Noru requires a current
+`.noru/codebase-map.md`.
+
+- Feature satisfies this with its first leg, Codebase Map.
+- Change, Bug Fix, Troubleshoot, Quick Task, and Exploration run the same check as a preflight.
+- New Project skips this only when the repository is empty or has no meaningful source files.
+
+The map is refreshed automatically when stale based on git metadata. The default
+base ref is selected in this order: `origin/main`, `main`, `origin/master`,
+`master`.
 
 ## Checkpoint Behavior
 

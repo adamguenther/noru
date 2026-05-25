@@ -62,6 +62,25 @@ If promoted, transfer the description and start the suggested track.
 
 ---
 
+## Codebase Map Preflight
+
+If the repository is empty or has no meaningful source files, skip this preflight.
+That is the normal New Project path.
+
+If this is a non-empty repository, read and follow:
+
+@~/.claude/noru/references/codebase-map-lifecycle.md
+
+If `.noru/codebase-map.md` is missing or stale against the selected main/master
+base and current `HEAD`, load and run:
+
+@~/.claude/noru/steps/codebase-map.md
+
+Continue only after the map exists and is current. Discovery should know whether
+this is truly greenfield or a new project inside an existing repo.
+
+---
+
 ## Initialize State
 
 Create or update `.noru/state.yaml`:
@@ -93,6 +112,12 @@ legs:
   - id: archive
     status: pending
 decisions: []
+codebase_map:
+  path: .noru/codebase-map.md
+  base_ref: [selected base ref, if applicable]
+  base_sha: [selected base sha, if applicable]
+  head_sha: [current HEAD sha, if applicable]
+  status: [current | refreshed | not_applicable]
 ```
 
 Create `.noru/` directory if it doesn't exist.

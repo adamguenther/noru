@@ -9,24 +9,36 @@ description: "Freeform exploration. No gates, no specs, no review."
 
 Work on whatever the user is investigating, without structure or ceremony. This is the most permissive step -- no specs, no atomic commits, no code quality gates. The goal is learning, not shipping.
 
+Read and follow:
+
+@~/.claude/noru/references/exploration-lifecycle.md
+
 ## Process
 
-1. **Create an exploration branch.**
+1. **Frame the exploration.**
+   Capture the question, scope, constraints, and stop condition. Keep it short. Write it to `.noru/explorations/[topic]/log.md`.
+
+2. **Create an exploration branch.**
    Branch name: `explore/[topic]-[YYYY-MM-DD]`
    Topic is a slugified version of the investigation subject.
+   Check current branch and `git status --short` first. If the worktree is dirty, preserve it and do not reset or discard anything.
 
-2. **Work freeform.**
+3. **Work freeform.**
    Follow the user's lead. Try things, prototype, read code, spike solutions. There is no predetermined path -- the user directs.
    - No atomic commits required. Commit when convenient, or don't.
    - No test requirements. Write tests if they help investigate, skip them if not.
    - No style enforcement. This is throwaway code.
 
-3. **Stay on the branch.**
+4. **Log experiments.**
+   Every meaningful experiment gets an entry in `.noru/explorations/[topic]/log.md` with intent, change, evidence, result, and next step. Do not let conclusions outrun evidence.
+
+5. **Stay on the branch.**
    All work happens on the exploration branch. Do not merge to main.
 
 ## User Interaction
 
 - Before starting: confirm the exploration topic (one sentence).
+- If the frame is missing or vague, ask one question to sharpen it before branching.
 - During: follow the user's direction. Ask clarifying questions when the investigation stalls or forks.
 - When the user signals done (says "done", "that's enough", "let's wrap up", or similar): transition to the findings step.
 - If the user's requests shift toward production-quality work (tests, migrations, proper error handling), surface the promotion option: "That's production-level work. Exploration code is throwaway. Promote to Feature? [Y/n]"
@@ -34,8 +46,10 @@ Work on whatever the user is investigating, without structure or ceremony. This 
 ## Outputs
 
 - Exploration branch with whatever was tried.
-- No deliverable -- the next step captures findings.
+- `.noru/explorations/[topic]/log.md` with the frame and experiment entries.
+- No final deliverable -- the next step captures findings.
 
 ## Completion Criteria
 
 - The user signals they are done exploring.
+- The log contains enough evidence to support findings.

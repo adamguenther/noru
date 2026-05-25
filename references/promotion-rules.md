@@ -37,6 +37,9 @@ These apply regardless of which track is active:
 ### Exploration
 - Exploration yields a clear feature to build -> **Feature**
 - Exploration reveals a needed change -> **Change**
+- Exploration reproduces a specific code bug -> **Bug Fix**
+- Exploration reveals an unclear or operational fault domain -> **Troubleshoot**
+- Exploration validates a greenfield project idea -> **New Project**
 
 ### New Project
 - No defined promotion triggers. (Where would you promote to?)

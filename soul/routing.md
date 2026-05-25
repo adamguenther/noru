@@ -30,6 +30,11 @@ strongly suggests Troubleshoot over Bug Fix.
 | Existing code, no tests       | Same routing, but note test gap in plan    |
 | Monorepo with multiple services | Ask which service if description is ambiguous |
 
+For any non-empty existing-code repo, require a current `.noru/codebase-map.md`
+before the selected track starts. Refresh the map automatically when git metadata
+shows it is stale, using `origin/main`, `main`, `origin/master`, then `master` as
+the base-ref preference order.
+
 ---
 
 ## Active Track Check

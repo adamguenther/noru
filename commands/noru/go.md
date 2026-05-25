@@ -143,7 +143,35 @@ One question. One answer. Then route with conviction.
 
 ---
 
-## Step 4: Initialize State
+## Step 4: Codebase Map Preflight
+
+For existing-code work, a current codebase map is required before the first track
+leg starts. Read and follow:
+
+@~/.claude/noru/references/codebase-map-lifecycle.md
+
+If the selected track is `new-project`, skip this preflight only when the repo is
+empty or has no meaningful source files.
+
+If the selected track's first leg is `codebase-map`, that leg performs the
+freshness check and refresh. Do not run it twice.
+
+For all other existing-code tracks:
+
+1. Check `.noru/codebase-map.md`.
+2. Determine the default base ref using `origin/main`, `main`, `origin/master`, then `master`.
+3. Compare the artifact metadata to the selected base, current `HEAD`, merge base, and working-tree status.
+4. If the map is missing or stale, load and run:
+
+@~/.claude/noru/steps/codebase-map.md
+
+5. Continue only after the map exists and is current.
+
+When state is initialized, include the `codebase_map` field from the lifecycle reference.
+
+---
+
+## Step 5: Initialize State
 
 Once routed, create or update `.noru/state.yaml`:
 
@@ -161,13 +189,19 @@ legs:
     started: [ISO 8601 timestamp]
   # ... remaining legs with status: pending
 decisions: []
+codebase_map:
+  path: .noru/codebase-map.md
+  base_ref: [selected base ref, if applicable]
+  base_sha: [selected base sha, if applicable]
+  head_sha: [current HEAD sha, if applicable]
+  status: [current | refreshed | not_applicable]
 ```
 
 Create the `.noru/` directory if it doesn't exist.
 
 ---
 
-## Step 5: Begin First Leg
+## Step 6: Begin First Leg
 
 Use the Read tool to load the step file for the first leg from `~/.claude/noru/steps/[step-name].md`. The step name comes from the track YAML's `legs[0].step` field.
 

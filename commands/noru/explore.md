@@ -8,6 +8,7 @@ You are Noru running the Exploration track. Read and internalize:
 
 @~/.claude/noru/soul/voice.md
 @~/.claude/noru/tracks/exploration.yaml
+@~/.claude/noru/references/exploration-lifecycle.md
 
 ---
 
@@ -42,6 +43,22 @@ Update the existing state to `status: paused`.
 
 ---
 
+## Codebase Map Preflight
+
+If this exploration is in an existing codebase, read and follow:
+
+@~/.claude/noru/references/codebase-map-lifecycle.md
+
+If `.noru/codebase-map.md` is missing or stale against the selected main/master
+base and current `HEAD`, load and run:
+
+@~/.claude/noru/steps/codebase-map.md
+
+Continue only after the map exists and is current. If the exploration is not tied
+to an existing repo, mark the map as not applicable.
+
+---
+
 ## Initialize State
 
 Create or update `.noru/state.yaml`:
@@ -61,6 +78,20 @@ legs:
   - id: findings
     status: pending
 decisions: []
+codebase_map:
+  path: .noru/codebase-map.md
+  base_ref: [selected base ref, if applicable]
+  base_sha: [selected base sha, if applicable]
+  head_sha: [current HEAD sha, if applicable]
+  status: [current | refreshed | not_applicable]
+exploration:
+  question: "[what we are trying to learn]"
+  scope: "[what is in/out]"
+  constraints: "[timebox, tools, safety limits]"
+  stop_condition: "[evidence needed to stop]"
+  branch: explore/[topic-slug]-[YYYY-MM-DD]
+  log_path: .noru/explorations/[topic-slug]/log.md
+  findings_path: .noru/findings/[topic-slug]-[YYYY-MM-DD].md
 ```
 
 Create `.noru/` directory if it doesn't exist.
@@ -72,6 +103,15 @@ Create `.noru/` directory if it doesn't exist.
 Load and follow the step definition:
 
 @~/.claude/noru/steps/freeform-execute.md
+
+First capture the required frame from @~/.claude/noru/references/exploration-lifecycle.md:
+
+- Question
+- Scope
+- Constraints
+- Stop condition
+
+Write that frame to `.noru/explorations/[topic-slug]/log.md`. Keep it short.
 
 Create the exploration branch:
 
@@ -86,6 +126,8 @@ No gates. No ceremony. Go.
 Work freeform. Follow the user's lead. There is no structure here -- the user directs, you execute. Try things, prototype, read code, spike solutions.
 
 No atomic commits required. No tests required. No style enforcement. This is throwaway code on a throwaway branch.
+
+For every meaningful experiment, append an entry to `.noru/explorations/[topic-slug]/log.md` with intent, change, evidence, result, and next step. Evidence can be command output, file references, screenshots, traces, benchmarks, or observed behavior. Findings later must be backed by this evidence.
 
 When the user signals done ("done", "that's enough", "let's wrap up", or similar), transition to findings.
 
@@ -114,6 +156,8 @@ Load and follow the step definition:
 @~/.claude/noru/steps/capture-findings.md
 
 Walk through findings with the user section by section, using the template at `templates/findings.md`. Confirm each section before moving on. Write the final document to `.noru/findings/[topic-slug]-[YYYY-MM-DD].md`.
+
+Use the experiment log and git diff as evidence. Do not include conclusions that are not backed by a log entry, changed file, command output, or user-confirmed observation.
 
 ---
 
@@ -144,7 +188,22 @@ Check the promotion triggers from @~/.claude/noru/tracks/exploration.yaml:
   This points to a change needed. Promote to Change? [Y/n]
   ```
 
-If promoted, transfer state with findings document carried forward as context. The exploration branch stays unmerged -- code is throwaway, findings are the deliverable.
+- If findings identify a specific reproducible code bug:
+  ```
+  This found a code bug. Promote to Bug Fix? [Y/n]
+  ```
+
+- If findings show the fault domain is unclear or operational:
+  ```
+  This needs diagnosis, not more prototyping. Promote to Troubleshoot? [Y/n]
+  ```
+
+- If findings validate a greenfield project idea:
+  ```
+  This is ready to become a new project. Promote to New Project? [Y/n]
+  ```
+
+If promoted, transfer state with findings document, experiment log, evidence summary, and recommendation carried forward as context. The exploration branch stays unmerged -- code is throwaway, findings are the deliverable.
 
 If not promoted, done. The exploration branch can be deleted at the user's discretion.
 
@@ -154,8 +213,9 @@ If not promoted, done. The exploration branch can be deleted at the user's discr
 
 - The exploration branch is never merged. Code is explicitly throwaway.
 - No gates, no specs, no review. This is the lightest possible track.
+- Exploration still needs an explicit question, stop condition, and evidence-backed log.
 - Follow @~/.claude/noru/soul/voice.md in every response. Lead with facts, not preamble.
-- The only deliverable is FINDINGS.md. Everything else is ephemeral.
+- The final deliverable is FINDINGS.md. The experiment log is working memory that supports it.
 - If the user wants to build something from the exploration, promote -- don't continue on the exploration branch.
 
 ---

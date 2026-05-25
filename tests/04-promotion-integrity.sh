@@ -178,7 +178,7 @@ while IFS= read -r track_file; do
   pass "$track_name: no self-promotion"
 done < <(track_files)
 
-# Exploration should only promote to build tracks (Feature, Change), not diagnostic ones
+# Exploration can promote to tracks that turn evidence into real work.
 exploration_targets=()
 if [ -f "$TRACKS_DIR/exploration.yaml" ]; then
   while IFS= read -r target; do
@@ -187,11 +187,8 @@ if [ -f "$TRACKS_DIR/exploration.yaml" ]; then
 
   for target in "${exploration_targets[@]}"; do
     case "$target" in
-      feature|change|new-project)
+      feature|change|new-project|bug-fix|troubleshoot)
         pass "exploration → $target: sensible promotion"
-        ;;
-      bug-fix|troubleshoot)
-        fail "exploration → $target" "exploration shouldn't promote to diagnostic tracks"
         ;;
       *)
         pass "exploration → $target: noted"
@@ -199,5 +196,19 @@ if [ -f "$TRACKS_DIR/exploration.yaml" ]; then
     esac
   done
 fi
+
+# ── Test: Exploration promotion coverage ──
+
+category "Exploration promotion coverage"
+
+EXPECTED_EXPLORATION_TARGETS=("feature" "change" "bug-fix" "troubleshoot" "new-project")
+exploration_suggests=$(yq -r '.promotion_triggers[].suggest' "$TRACKS_DIR/exploration.yaml")
+for target in "${EXPECTED_EXPLORATION_TARGETS[@]}"; do
+  if grep -qx "$target" <<< "$exploration_suggests"; then
+    pass "exploration promotes to $target"
+  else
+    fail "exploration promotion" "missing target $target"
+  fi
+done
 
 summary

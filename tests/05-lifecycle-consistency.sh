@@ -246,6 +246,28 @@ while IFS= read -r track_file; do
   done
 done < <(track_files)
 
+# ── Test: Exploration has evidence lifecycle ──
+
+category "Exploration evidence lifecycle"
+
+if grep -q "exploration-lifecycle.md" "$STEPS_DIR/freeform-execute.md"; then
+  pass "freeform-execute references exploration lifecycle"
+else
+  fail "freeform-execute" "doesn't reference exploration lifecycle"
+fi
+
+if grep -q ".noru/explorations" "$STEPS_DIR/freeform-execute.md"; then
+  pass "freeform-execute writes exploration log"
+else
+  fail "freeform-execute" "doesn't mention exploration log"
+fi
+
+if grep -q "evidence" "$STEPS_DIR/capture-findings.md" && grep -q ".noru/findings" "$STEPS_DIR/capture-findings.md"; then
+  pass "capture-findings requires evidence-backed findings"
+else
+  fail "capture-findings" "missing evidence or findings artifact requirement"
+fi
+
 # ── Test: Execution legs come after planning legs ──
 
 category "Planning before execution ordering"

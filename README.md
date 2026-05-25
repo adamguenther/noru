@@ -88,6 +88,13 @@ hooks/       Lifecycle hooks for extensibility
 templates/   Output templates for specs, plans, findings
 ```
 
+Existing-code tracks require `.noru/codebase-map.md`. Noru refreshes it
+automatically when git metadata shows it is stale, using `origin/main`, `main`,
+`origin/master`, or `master` as the default base.
+
+Exploration uses a throwaway branch plus `.noru/explorations/[topic]/log.md` for
+working evidence. Its final deliverable is `.noru/findings/[topic]-[date].md`.
+
 ## License
 
 MIT

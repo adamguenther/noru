@@ -25,3 +25,12 @@ promotion_triggers:
   - condition: "exploration reveals a needed change"
     suggest: change
     message: "This points to a change needed. Promote to Change?"
+  - condition: "exploration reproduces a specific code bug"
+    suggest: bug-fix
+    message: "This found a code bug. Promote to Bug Fix?"
+  - condition: "exploration reveals an unclear or operational fault domain"
+    suggest: troubleshoot
+    message: "This needs diagnosis, not more prototyping. Promote to Troubleshoot?"
+  - condition: "exploration validates a greenfield project idea"
+    suggest: new-project
+    message: "This is ready to become a new project. Promote to New Project?"
